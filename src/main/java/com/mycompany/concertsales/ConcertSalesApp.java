@@ -1,7 +1,7 @@
 
-package com.mycompany.semana07;
+package com.mycompany.concertsales;
         
-public class Semana07 {
+public class ConcertSalesApp {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");

@@ -2,6 +2,7 @@
 package modelo;
 
 import modelo.excepciones.EntradaNoDisponibleException;
+
 public class Entrada {
     private int numero;
     private String estado; 
@@ -23,4 +24,7 @@ public class Entrada {
         this.estado = "Disponible";
         return true;
     }
+    
+    public String getEstado() { return estado; }
+    public int getNumero() { return numero; }
 }

@@ -2,15 +2,34 @@
 package modelo;
 
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.excepciones.EntradaLimiteException;
 
 public class Venta {
     private Date fecha;
     private int monto;
-
-    public Venta(Date fecha, int monto){
-        this.fecha = fecha;
-        this.monto = monto;
+    private Zona zona;
+    private Tarjeta tarjeta;
+    private List<Entrada> entradas;
+    
+    public Venta(Zona zona, Tarjeta tarjeta){
+        this.fecha = new Date();
+        this.zona = zona;
+        this.tarjeta = tarjeta;
+        this.entradas = new ArrayList<>();
+        this.monto = 0;
     }
-
+    
+    public void agregarEntradas(List<Entrada> nuevasEntradas) throws EntradaLimiteException {
+        if (this.entradas.size() + nuevasEntradas.size() > 4) {
+            throw new EntradaLimiteException("Error: Una transacción no puede contener más de 4 entradas.");
+        }
+        this.entradas.addAll(nuevasEntradas);
+        this.monto = this.entradas.size() * zona.getPrecio();
+    }
+    
     public boolean anular(){return true;}
+    public Date getFecha() { return fecha; }
+    public int getMonto() { return monto; }
 }

@@ -17,8 +17,15 @@ public class Zona{
         this.capacidad = capacidad;
         this.precio = precio;
         this.entradas = new ArrayList<>();
+        generarEntradasBase();
     }
-
+    
+    private void generarEntradasBase() {
+        for (int i = 1; i <= capacidad; i++) {
+            entradas.add(new Entrada(i, "Disponible"));
+        }
+    }
+    
     public boolean generarEntradas(int cantidad) throws CapacidadExcedidaException {
         if (entradas.size() + cantidad > capacidad) {
             throw new CapacidadExcedidaException("No se pueden generar " + cantidad + " entradas. "
@@ -30,19 +37,36 @@ public class Zona{
         }
         return true;
     }
-
-    public Entrada[] mostrarEntrada(){return new Entrada[0];}
-
-    public Entrada[] venderEntrada(int numero) throws CapacidadExcedidaException, EntradaNoDisponibleException{
+    
+    public int getCapacidadDisponible() {
         int disponibles = 0;
         for (Entrada e : entradas) {
-            disponibles++; 
+            if ("Disponible".equalsIgnoreCase(e.getEstado())) {
+                disponibles++;
+            }
+        }
+        return disponibles;
+    }
+    
+    public Entrada[] mostrarEntrada(){return new Entrada[0];}
+
+    public List<Entrada> venderEntradas(int numero) throws CapacidadExcedidaException, EntradaNoDisponibleException {
+        if (numero > getCapacidadDisponible()) {
+            throw new CapacidadExcedidaException("Solo quedan " + getCapacidadDisponible() + " entradas disponibles en la zona " + nombre + ".");
         }
 
-        if (numero > disponibles) {
-            throw new CapacidadExcedidaException("Solo quedan " + disponibles + " entradas disponibles en la zona " + nombre + ".");
+        List<Entrada> seleccionadas = new ArrayList<>();
+        int cont = 0;
+        for (Entrada e : entradas) {
+            if ("Disponible".equalsIgnoreCase(e.getEstado()) && cont < numero) {
+                e.vender();
+                seleccionadas.add(e);
+                cont++;
+            }
         }
-        
-        return new Entrada[numero];
+        return seleccionadas;
     }
+    
+    public int getPrecio() { return precio; }
+    public String getNombre() { return nombre; }
 }

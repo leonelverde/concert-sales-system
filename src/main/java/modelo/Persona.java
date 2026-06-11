@@ -1,6 +1,8 @@
 package modelo;
 
 import modelo.excepciones.EntradaLimiteException;
+import modelo.excepciones.CapacidadExcedidaException;
+import modelo.excepciones.EntradaNoDisponibleException;
 
 public abstract class Persona {
     private String nombres;
@@ -14,9 +16,14 @@ public abstract class Persona {
         this.dni = dni;
         this.contraseña = contraseña;
     }
+    
     public Boolean registrarTarjeta(){return true;}
     public Boolean eliminarTarjeta(){return true;}
     public Boolean anularVenta(){return true;}
     
-    public abstract Boolean comprar(int cantidad) throws EntradaLimiteException;
+    public String getNombres(){return nombres;}
+    public String getApellidos(){return apellidos;}
+    public String getDni(){return dni;}
+    
+    public abstract Boolean comprar(int cantidad) throws EntradaLimiteException, CapacidadExcedidaException, EntradaNoDisponibleException;
 }

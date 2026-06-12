@@ -31,7 +31,7 @@ public class PanelAdmin extends javax.swing.JPanel {
         buttonSupervisarVentas = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
 
-        lblBienvenidoAdmin.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
+        lblBienvenidoAdmin.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
         lblBienvenidoAdmin.setText("¡Bienvenido, Administrador!");
 
         buttonGestionarZonas.setText("Gestionar Zonas");
@@ -46,20 +46,19 @@ public class PanelAdmin extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buttonGestionarZonas)
-                .addGap(153, 153, 153))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblBienvenidoAdmin))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(230, 230, 230)
+                        .addComponent(buttonGestionarZonas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
                         .addComponent(buttonSupervisarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(237, 237, 237)
                         .addComponent(buttonCerrarSesion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -68,13 +67,13 @@ public class PanelAdmin extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblBienvenidoAdmin)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(buttonGestionarZonas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(buttonSupervisarVentas)
-                .addGap(41, 41, 41)
+                .addGap(35, 35, 35)
                 .addComponent(buttonCerrarSesion)
-                .addGap(60, 60, 60))
+                .addGap(70, 70, 70))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -16,11 +16,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="buttonGestionarZonas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -28,11 +23,15 @@
                       <Component id="lblBienvenidoAdmin" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
+                      <Component id="buttonGestionarZonas" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                       <Component id="buttonSupervisarVentas" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                       <Component id="buttonCerrarSesion" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -45,13 +44,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="lblBienvenidoAdmin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
               <Component id="buttonGestionarZonas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="buttonSupervisarVentas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="buttonCerrarSesion" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +59,7 @@
     <Component class="javax.swing.JLabel" name="lblBienvenidoAdmin">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Liberation Sans" size="36" style="0"/>
+          <Font name="Nimbus Mono PS" size="36" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xa1;Bienvenido, Administrador!"/>
       </Properties>

@@ -38,6 +38,7 @@ public class PanelRegistro extends javax.swing.JPanel {
         buttonVolver = new javax.swing.JButton();
         LblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         LblNombres.setText("Nombres");
 
@@ -47,9 +48,9 @@ public class PanelRegistro extends javax.swing.JPanel {
 
         LblPassword.setText("Contraseña");
 
-        txtDni.addActionListener(this::txtDniActionPerformed);
+        txtNombres.addActionListener(this::txtNombresActionPerformed);
 
-        txtPassword.setText("jPasswordField1");
+        txtDni.addActionListener(this::txtDniActionPerformed);
 
         buttonCreateAccount.setText("Crear cuenta");
         buttonCreateAccount.addActionListener(this::buttonCreateAccountActionPerformed);
@@ -59,25 +60,33 @@ public class PanelRegistro extends javax.swing.JPanel {
 
         LblUsuario.setText("Usuario");
 
+        jLabel1.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
+        jLabel1.setText("Registrarse");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LblNombres)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LblUsuario)
-                                .addComponent(LblApellidos))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(LblDni))
-                    .addComponent(LblPassword)
-                    .addComponent(buttonVolver))
+                        .addGap(79, 79, 79)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblPassword)
+                            .addComponent(buttonVolver)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LblNombres)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(LblUsuario)
+                                            .addGap(8, 8, 8))
+                                        .addComponent(LblApellidos))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LblDni)
+                        .addGap(28, 28, 28)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
@@ -85,29 +94,35 @@ public class PanelRegistro extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(txtUsuario)
                             .addComponent(txtDni)
                             .addComponent(txtApellidos)
-                            .addComponent(txtNombres)
-                            .addComponent(txtUsuario))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                            .addComponent(txtNombres))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 106, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblNombres)
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblNombres))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblApellidos)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblApellidos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblDni)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblDni))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,6 +150,10 @@ public class PanelRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonVolverActionPerformed
 
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblApellidos;
@@ -144,6 +163,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel LblUsuario;
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonVolver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtNombres;

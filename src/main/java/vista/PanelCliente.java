@@ -32,7 +32,7 @@ public class PanelCliente extends javax.swing.JPanel {
         buttonHistorialCompras = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
 
-        lblBienvenidoCliente.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
+        lblBienvenidoCliente.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
         lblBienvenidoCliente.setText("¡Bienvenido al Sistema!");
 
         buttonVerZonas.setText("Ver Zonas");
@@ -50,42 +50,40 @@ public class PanelCliente extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lblBienvenidoCliente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonHistorialCompras)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(buttonComprarEntradas)
-                                .addGap(8, 8, 8)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(lblBienvenidoCliente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonVerZonas)
-                        .addGap(147, 147, 147))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonHistorialCompras)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonComprarEntradas)
+                                .addGap(8, 8, 8)))
+                        .addGap(171, 171, 171))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonCerrarSesion)
-                        .addGap(137, 137, 137))))
+                        .addGap(193, 193, 193))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonVerZonas)
+                        .addGap(201, 201, 201))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lblBienvenidoCliente)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(buttonVerZonas)
-                .addGap(27, 27, 27)
+                .addGap(31, 31, 31)
                 .addComponent(buttonComprarEntradas)
-                .addGap(27, 27, 27)
-                .addComponent(buttonHistorialCompras)
                 .addGap(26, 26, 26)
+                .addComponent(buttonHistorialCompras)
+                .addGap(27, 27, 27)
                 .addComponent(buttonCerrarSesion)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

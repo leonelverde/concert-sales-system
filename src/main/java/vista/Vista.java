@@ -17,6 +17,18 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() {
         initComponents();
+        
+        // 1. Creamos las instancias de tus paneles
+        PanelLogin panelLogin = new PanelLogin();
+        PanelRegistro panelRegistro = new PanelRegistro();
+        PanelCliente panelCliente = new PanelCliente();
+        PanelAdmin panelAdmin = new PanelAdmin();
+        
+        // 2. Los agregamos al jPanel1 dándoles su "Card Name"
+        jPanel1.add(panelLogin, "login");
+        jPanel1.add(panelRegistro, "registro");
+        jPanel1.add(panelCliente, "cliente");
+        jPanel1.add(panelAdmin, "admin");
     }
 
     /**

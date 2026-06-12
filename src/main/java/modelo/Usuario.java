@@ -6,8 +6,8 @@ import modelo.excepciones.EntradaLimiteException;
 public class Usuario extends Persona{
     private Boolean estado;
     
-    public Usuario(String nombres, String apellidos, String dni, String contraseña, Boolean estado){
-        super(nombres, apellidos, dni, contraseña);
+    public Usuario(String nombres, String apellidos, String dni, String usuario, String contraseña, Boolean estado){
+        super(nombres, apellidos, dni, usuario, contraseña);
         this.estado = estado;
     }
     

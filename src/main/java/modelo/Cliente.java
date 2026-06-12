@@ -16,8 +16,8 @@ public class Cliente extends Persona{
     private Zona zonaSeleccionada;
     private Tarjeta tarjetaSeleccionada;
     
-    public Cliente(String nombres, String apellidos, String dni, String contraseña, Integer puntos){
-        super(nombres, apellidos, dni, contraseña);
+    public Cliente(String nombres, String apellidos, String dni, String contraseña, String usuario, Integer puntos){
+        super(nombres, apellidos, dni, usuario, contraseña);
         this.puntos = puntos;
         this.historialCompras = new ArrayList<>();
         this.tarjetasRegistradas = new ArrayList<>();
@@ -57,4 +57,9 @@ public class Cliente extends Persona{
         historialCompras.add(nuevaVenta);
         return true;
     }
+    
+    public List<Venta> getHistorialCompras() {
+        return historialCompras;
+    }
+         
 }

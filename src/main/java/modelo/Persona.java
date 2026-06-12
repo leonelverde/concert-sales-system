@@ -8,12 +8,14 @@ public abstract class Persona {
     private String nombres;
     private String apellidos;
     private String dni;
+    protected String usuario;
     private String contraseña;
     
-    public Persona(String nombres, String apellidos, String dni, String contraseña){ 
+    public Persona(String nombres, String apellidos, String dni, String usuario, String contraseña){ 
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.dni = dni;
+        this.usuario = usuario;
         this.contraseña = contraseña;
     }
     
@@ -26,4 +28,7 @@ public abstract class Persona {
     public String getDni(){return dni;}
     
     public abstract Boolean comprar(int cantidad) throws EntradaLimiteException, CapacidadExcedidaException, EntradaNoDisponibleException;
+    
+    public String getUsuario() { return usuario; } 
+    public String getContraseña() { return contraseña; }
 }

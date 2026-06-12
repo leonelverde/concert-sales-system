@@ -16,7 +16,15 @@ public class Concierto {
         this.zonas = new ArrayList<>();
     }
 
-    public boolean agregarZona(String nombre){return true;}
+    public boolean agregarZona(Zona zona){return this.zonas.add(zona);}
 
-    public boolean eliminarZona(String nombre){return true;}
+    public boolean eliminarZona(Zona zona){return this.zonas.remove(zona);}
+    
+    public List<Zona> getZonas() {
+        return zonas;
+    }
+    
+    public double calcularRecaudacionTotal() {
+        return 0.0; 
+    }
 }

@@ -18,6 +18,11 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         
+        // 0. Tamaño fijo de la ventana principal
+        this.setSize(600, 500);
+        
+        this.setLocationRelativeTo(null);
+        
         // 1. Creamos las instancias de tus paneles
         PanelLogin panelLogin = new PanelLogin();
         PanelRegistro panelRegistro = new PanelRegistro();
@@ -50,11 +55,11 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
         );
 
         pack();

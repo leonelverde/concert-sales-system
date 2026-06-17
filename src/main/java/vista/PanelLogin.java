@@ -12,8 +12,62 @@ package vista;
 public class PanelLogin extends javax.swing.JPanel {
 
     /** Creates new form PanelLogin */
+    /** Creates new form PanelLogin */
     public PanelLogin() {
+        // 1. Dejamos que NetBeans instancie las variables y construya su diseño por defecto
         initComponents();
+        
+        // 2. Limpiamos el panel principal (removemos todo lo que puso initComponents)
+        this.removeAll();
+        
+        // --- PASO 1: CREAR EL PANEL INTERNO ---
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        
+        // Definimos el tamaño del "lienzo" interno donde irán tus cajas y botones
+        panelFormulario.setPreferredSize(new java.awt.Dimension(400, 350));
+        
+        // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
+        panelFormulario.setLayout(null); 
+        
+        // --- PASO 2: ACOMODAR TUS COMPONENTES EXISTENTES ---
+        // Usamos setBounds(X, Y, Ancho, Alto). 
+        // Puedes ajustar estos números después para afinar tu diseño.
+        
+        LblIniciarSesion.setBounds(30, 20, 340, 40); // El título "Iniciar Sesion"
+        panelFormulario.add(LblIniciarSesion);
+        
+        LblUser.setBounds(50, 100, 100, 30);
+        panelFormulario.add(LblUser);
+        
+        txtUser.setBounds(150, 100, 180, 30);
+        panelFormulario.add(txtUser);
+        
+        LblPassword.setBounds(50, 150, 100, 30);
+        panelFormulario.add(LblPassword);
+        
+        txtPasswordField.setBounds(150, 150, 180, 30);
+        panelFormulario.add(txtPasswordField);
+        
+        LblNoAccount.setBounds(55, 230, 200, 30);
+        panelFormulario.add(LblNoAccount);
+        
+        buttonRegistrarse.setBounds(50, 260, 130, 30);
+        panelFormulario.add(buttonRegistrarse);
+        
+        buttonLogin.setBounds(200, 260, 130, 30);
+        panelFormulario.add(buttonLogin);
+
+        // --- PASO 3: EL PANEL PRINCIPAL CENTRA AL INTERNO ---
+        // Le damos el GridBagLayout al PanelLogin principal
+        this.setLayout(new java.awt.GridBagLayout());
+        
+        // Metemos toda nuestra caja ya ordenada al centro
+        this.add(panelFormulario);
+        
+        // --- PASO 4: REDIBUJAR ---
+        // Le indicamos a Java que hemos cambiado la estructura y debe actualizar la memoria gráfica
+        this.revalidate();
+        this.repaint();
     }
 
     /** This method is called from within the constructor to
@@ -24,6 +78,7 @@ public class PanelLogin extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         LblUser = new javax.swing.JLabel();
         LblPassword = new javax.swing.JLabel();
@@ -32,90 +87,113 @@ public class PanelLogin extends javax.swing.JPanel {
         buttonRegistrarse = new javax.swing.JButton();
         LblNoAccount = new javax.swing.JLabel();
         txtPasswordField = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        LblIniciarSesion = new javax.swing.JLabel();
+
+        setLayout(new java.awt.GridBagLayout());
 
         LblUser.setText("Usuario");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 92, 0, 0);
+        add(LblUser, gridBagConstraints);
 
         LblPassword.setText("Contraseña");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 80, 0, 0);
+        add(LblPassword, gridBagConstraints);
+
+        txtUser.setColumns(10);
+        txtUser.addActionListener(this::txtUserActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 16, 0, 0);
+        add(txtUser, gridBagConstraints);
 
         buttonLogin.setText("Ingresar");
+        buttonLogin.addActionListener(this::buttonLoginActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 42, 59, 0);
+        add(buttonLogin, gridBagConstraints);
 
         buttonRegistrarse.setText("Registrarse");
         buttonRegistrarse.addActionListener(this::buttonRegistrarseActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 70, 59, 0);
+        add(buttonRegistrarse, gridBagConstraints);
 
         LblNoAccount.setText("¿No tiene una cuenta?");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 48, 0, 0);
+        add(LblNoAccount, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
-        jLabel1.setText("Iniciar Sesion");
+        txtPasswordField.setColumns(10);
+        txtPasswordField.addActionListener(this::txtPasswordFieldActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 16, 0, 0);
+        add(txtPasswordField, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(LblUser)
-                                .addGap(68, 68, 68))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(LblPassword)
-                                .addGap(54, 54, 54)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtPasswordField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buttonRegistrarse)
-                                        .addGap(18, 18, 18))
-                                    .addComponent(LblNoAccount))
-                                .addGap(42, 42, 42)
-                                .addComponent(buttonLogin)))))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblUser)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblPassword)
-                    .addComponent(txtPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(LblNoAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonRegistrarse)
-                    .addComponent(buttonLogin))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
+        LblIniciarSesion.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
+        LblIniciarSesion.setText("Iniciar Sesion");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 48, 0, 55);
+        add(LblIniciarSesion, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistrarseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRegistrarseActionPerformed
 
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void txtPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LblIniciarSesion;
     private javax.swing.JLabel LblNoAccount;
     private javax.swing.JLabel LblPassword;
     private javax.swing.JLabel LblUser;
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonRegistrarse;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtPasswordField;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

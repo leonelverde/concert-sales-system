@@ -14,26 +14,20 @@ public class PanelLogin extends javax.swing.JPanel {
     /** Creates new form PanelLogin */
     /** Creates new form PanelLogin */
     public PanelLogin() {
-        // 1. Dejamos que NetBeans instancie las variables y construya su diseño por defecto
         initComponents();
-        
-        // 2. Limpiamos el panel principal (removemos todo lo que puso initComponents)
         this.removeAll();
         
-        // --- PASO 1: CREAR EL PANEL INTERNO ---
+        // Panel Interno
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
         
-        // Definimos el tamaño del "lienzo" interno donde irán tus cajas y botones
+        // Dimensiones del panel interno
         panelFormulario.setPreferredSize(new java.awt.Dimension(400, 350));
         
         // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
         panelFormulario.setLayout(null); 
         
-        // --- PASO 2: ACOMODAR TUS COMPONENTES EXISTENTES ---
-        // Usamos setBounds(X, Y, Ancho, Alto). 
-        // Puedes ajustar estos números después para afinar tu diseño.
-        
-        LblIniciarSesion.setBounds(30, 20, 340, 40); // El título "Iniciar Sesion"
+        // setBounds(X, Y, Ancho, Alto). 
+        LblIniciarSesion.setBounds(30, 20, 340, 40);
         panelFormulario.add(LblIniciarSesion);
         
         LblUser.setBounds(50, 100, 100, 30);
@@ -57,15 +51,12 @@ public class PanelLogin extends javax.swing.JPanel {
         buttonLogin.setBounds(200, 260, 130, 30);
         panelFormulario.add(buttonLogin);
 
-        // --- PASO 3: EL PANEL PRINCIPAL CENTRA AL INTERNO ---
-        // Le damos el GridBagLayout al PanelLogin principal
+        // GridBagLayout a PanelLogin principal
         this.setLayout(new java.awt.GridBagLayout());
         
-        // Metemos toda nuestra caja ya ordenada al centro
+        // Insertando todo ordenado al panel interno
         this.add(panelFormulario);
         
-        // --- PASO 4: REDIBUJAR ---
-        // Le indicamos a Java que hemos cambiado la estructura y debe actualizar la memoria gráfica
         this.revalidate();
         this.repaint();
     }
@@ -89,6 +80,7 @@ public class PanelLogin extends javax.swing.JPanel {
         txtPasswordField = new javax.swing.JPasswordField();
         LblIniciarSesion = new javax.swing.JLabel();
 
+        setName(""); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
         LblUser.setText("Usuario");
@@ -172,6 +164,11 @@ public class PanelLogin extends javax.swing.JPanel {
 
     private void buttonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistrarseActionPerformed
         // TODO add your handling code here:
+        java.awt.Container contenedorPadre = this.getParent();
+        
+        java.awt.CardLayout administradorCartas = (java.awt.CardLayout) contenedorPadre.getLayout();
+        
+        administradorCartas.show(contenedorPadre, "registro");
     }//GEN-LAST:event_buttonRegistrarseActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed

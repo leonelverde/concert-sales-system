@@ -15,6 +15,64 @@ public class PanelRegistro extends javax.swing.JPanel {
      */
     public PanelRegistro() {
         initComponents();
+        
+        // Panel Interno
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        
+        // Dimensiones del panel interno
+        panelFormulario.setPreferredSize(new java.awt.Dimension(400, 380));
+        
+        // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
+        panelFormulario.setLayout(null); 
+        
+        // setBounds(X, Y, Ancho, Alto). 
+        lblRegistrarse.setBounds(70, 20, 280, 40);
+        panelFormulario.add(lblRegistrarse);
+        
+        LblNombres.setBounds(50, 80, 100, 30);
+        panelFormulario.add(LblNombres);
+
+        txtNombres.setBounds(150, 80, 180, 30);
+        panelFormulario.add(txtNombres);
+        
+        LblApellidos.setBounds(50, 130, 100, 30);
+        panelFormulario.add(LblApellidos);
+        
+        txtApellidos.setBounds(150, 130, 180, 30);
+        panelFormulario.add(txtApellidos);
+        
+        LblDni.setBounds(50, 180, 100, 30);
+        panelFormulario.add(LblDni);
+        
+        txtDni.setBounds(150, 180, 180, 30);
+        panelFormulario.add(txtDni);
+        
+        LblUsuario.setBounds(50, 230, 100, 30);
+        panelFormulario.add(LblUsuario);
+        
+        txtUsuario.setBounds(150, 230, 180, 30);
+        panelFormulario.add(txtUsuario);
+        
+        LblPassword.setBounds(50, 280, 100, 30);
+        panelFormulario.add(LblPassword);
+        
+        txtPassword.setBounds(150, 280, 180, 30);
+        panelFormulario.add(txtPassword);
+        
+        buttonVolver.setBounds(50, 330, 130, 30);
+        panelFormulario.add(buttonVolver);
+        
+        buttonCreateAccount.setBounds(200, 330, 130, 30);
+        panelFormulario.add(buttonCreateAccount);
+        
+        // GridBagLayout a PanelLogin principal
+        this.setLayout(new java.awt.GridBagLayout());
+        
+        // Insertando todo ordenado al panel interno
+        this.add(panelFormulario);
+        
+        this.revalidate();
+        this.repaint();
     }
 
     /**
@@ -25,6 +83,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         LblNombres = new javax.swing.JLabel();
         LblApellidos = new javax.swing.JLabel();
@@ -38,104 +97,132 @@ public class PanelRegistro extends javax.swing.JPanel {
         buttonVolver = new javax.swing.JButton();
         LblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblRegistrarse = new javax.swing.JLabel();
+
+        setLayout(new java.awt.GridBagLayout());
 
         LblNombres.setText("Nombres");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 89, 0, 0);
+        add(LblNombres, gridBagConstraints);
 
         LblApellidos.setText("Apellidos");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 89, 0, 0);
+        add(LblApellidos, gridBagConstraints);
 
         LblDni.setText("DNI");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 103, 0, 0);
+        add(LblDni, gridBagConstraints);
 
         LblPassword.setText("Contraseña");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 79, 0, 0);
+        add(LblPassword, gridBagConstraints);
 
         txtNombres.addActionListener(this::txtNombresActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 68, 0, 0);
+        add(txtNombres, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 68, 0, 0);
+        add(txtApellidos, gridBagConstraints);
 
         txtDni.addActionListener(this::txtDniActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 68, 0, 0);
+        add(txtDni, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 68, 0, 0);
+        add(txtPassword, gridBagConstraints);
 
         buttonCreateAccount.setText("Crear cuenta");
         buttonCreateAccount.addActionListener(this::buttonCreateAccountActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 54, 31, 92);
+        add(buttonCreateAccount, gridBagConstraints);
 
         buttonVolver.setText("Volver");
         buttonVolver.addActionListener(this::buttonVolverActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 79, 31, 0);
+        add(buttonVolver, gridBagConstraints);
 
         LblUsuario.setText("Usuario");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 89, 0, 0);
+        add(LblUsuario, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 68, 0, 0);
+        add(txtUsuario, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
-        jLabel1.setText("Registrarse");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblPassword)
-                            .addComponent(buttonVolver)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblNombres)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(LblUsuario)
-                                            .addGap(8, 8, 8))
-                                        .addComponent(LblApellidos))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LblDni)
-                        .addGap(28, 28, 28)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(buttonCreateAccount))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtUsuario)
-                            .addComponent(txtDni)
-                            .addComponent(txtApellidos)
-                            .addComponent(txtNombres))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 105, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(105, 105, 105))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 11, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblNombres))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblApellidos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblDni))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblUsuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCreateAccount)
-                    .addComponent(buttonVolver))
-                .addGap(31, 31, 31))
-        );
+        lblRegistrarse.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
+        lblRegistrarse.setText("Registrarse");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 69, 0, 0);
+        add(lblRegistrarse, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
@@ -148,6 +235,11 @@ public class PanelRegistro extends javax.swing.JPanel {
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
         // TODO add your handling code here:
+        java.awt.Container contenedorPadre = this.getParent();
+        
+        java.awt.CardLayout administradorCartas = (java.awt.CardLayout) contenedorPadre.getLayout();
+        
+        administradorCartas.show(contenedorPadre, "login");
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
@@ -163,7 +255,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel LblUsuario;
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonVolver;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblRegistrarse;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtNombres;

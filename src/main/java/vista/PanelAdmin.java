@@ -67,7 +67,7 @@ public class PanelAdmin extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblBienvenidoAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(buttonGestionarZonas)
                 .addGap(37, 37, 37)
                 .addComponent(buttonSupervisarVentas)

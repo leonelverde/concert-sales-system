@@ -28,12 +28,36 @@ public class Vista extends javax.swing.JFrame {
         PanelRegistro panelRegistro = new PanelRegistro();
         PanelCliente panelCliente = new PanelCliente();
         PanelAdmin panelAdmin = new PanelAdmin();
+        PanelComprarEntradas panelCompra = new PanelComprarEntradas();
         
         // 2. Los agregamos al jPanel1 dándoles su "Card Name"
         jPanel1.add(panelLogin, "login");
         jPanel1.add(panelRegistro, "registro");
         jPanel1.add(panelCliente, "cliente");
         jPanel1.add(panelAdmin, "admin");
+        jPanel1.add(panelCompra, "comprar");
+        
+        // --- 3. INICIALIZAR LA ARQUITECTURA MVC ---
+        
+        // A) Instanciamos la clase que lee y escribe los archivos .dat
+        modelo.GestorPersistencia modeloPersistencia = new modelo.GestorPersistencia();
+        
+        // Encendemos primero el del cliente
+        controlador.ControladorCliente cCliente = new controlador.ControladorCliente(
+            panelCliente, 
+            panelCompra, 
+            jPanel1
+        );
+        
+        // B) Instanciamos el Controlador y le pasamos todas las piezas que necesita gobernar
+        // (La vista de login, la vista de registro, el modelo de datos, y el contenedor principal jPanel1)
+        controlador.ControladorAutentication controladorAuth = new controlador.ControladorAutentication(
+            panelLogin, 
+            panelRegistro, 
+            modeloPersistencia, 
+            jPanel1,
+            cCliente
+        );
     }
 
     /**

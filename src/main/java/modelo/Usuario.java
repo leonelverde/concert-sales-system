@@ -2,8 +2,9 @@
 package modelo;
 
 import modelo.excepciones.EntradaLimiteException;
+import java.io.Serializable;
 
-public class Usuario extends Persona{
+public class Usuario extends Persona implements Serializable{
     private Boolean estado;
     
     public Usuario(String nombres, String apellidos, String dni, String usuario, String contraseña, Boolean estado){

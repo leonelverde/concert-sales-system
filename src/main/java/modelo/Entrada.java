@@ -2,8 +2,9 @@
 package modelo;
 
 import modelo.excepciones.EntradaNoDisponibleException;
+import java.io.Serializable;
 
-public class Entrada {
+public class Entrada implements Serializable{
     private int numero;
     private String estado; 
 

@@ -164,11 +164,6 @@ public class PanelLogin extends javax.swing.JPanel {
 
     private void buttonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistrarseActionPerformed
         // TODO add your handling code here:
-        java.awt.Container contenedorPadre = this.getParent();
-        
-        java.awt.CardLayout administradorCartas = (java.awt.CardLayout) contenedorPadre.getLayout();
-        
-        administradorCartas.show(contenedorPadre, "registro");
     }//GEN-LAST:event_buttonRegistrarseActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
@@ -194,5 +189,11 @@ public class PanelLogin extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtPasswordField;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
-
+    
+    
+    // --- GETTERS PARA EL CONTROLADOR ---
+    public javax.swing.JTextField getTxtUser() { return txtUser; }
+    public javax.swing.JPasswordField getTxtPasswordField() { return txtPasswordField; }
+    public javax.swing.JButton getButtonLogin() { return buttonLogin; }
+    public javax.swing.JButton getButtonRegistrarse() { return buttonRegistrarse; }
 }

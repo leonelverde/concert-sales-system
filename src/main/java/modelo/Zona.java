@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.excepciones.CapacidadExcedidaException;
 import modelo.excepciones.EntradaNoDisponibleException;
+import java.io.Serializable;
 
-public class Zona{
+public class Zona implements Serializable{
     private String nombre;
     private int capacidad;
     private int precio;

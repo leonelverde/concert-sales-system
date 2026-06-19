@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.excepciones.EntradaLimiteException;
+import java.io.Serializable;
 
-public class Venta {
+public class Venta implements Serializable {
     private Date fecha;
     private int monto;
     private Zona zona;

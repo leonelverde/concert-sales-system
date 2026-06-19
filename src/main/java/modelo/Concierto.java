@@ -4,8 +4,9 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.io.Serializable;
 
-public class Concierto {
+public class Concierto implements Serializable{
     private String nombre;
     private Date fecha;
     private List<Zona> zonas; 

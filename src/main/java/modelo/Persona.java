@@ -3,8 +3,9 @@ package modelo;
 import modelo.excepciones.EntradaLimiteException;
 import modelo.excepciones.CapacidadExcedidaException;
 import modelo.excepciones.EntradaNoDisponibleException;
+import java.io.Serializable;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     private String nombres;
     private String apellidos;
     private String dni;

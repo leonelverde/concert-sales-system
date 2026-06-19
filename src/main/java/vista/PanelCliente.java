@@ -15,6 +15,46 @@ public class PanelCliente extends javax.swing.JPanel {
      */
     public PanelCliente() {
         initComponents();
+        
+        // 1. Limpiamos el panel principal
+        this.removeAll();
+        
+        // 2. Panel Interno
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        
+        // Dimensiones del panel interno (Ligeramente más ancho para el título)
+        panelFormulario.setPreferredSize(new java.awt.Dimension(450, 350));
+        
+        // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
+        panelFormulario.setLayout(null); 
+        
+        // 3. Acomodando los componentes con setBounds(X, Y, Ancho, Alto)
+        
+        // Título principal
+        lblBienvenidoCliente.setBounds(20, 20, 410, 50);
+        lblBienvenidoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Centra el texto
+        panelFormulario.add(lblBienvenidoCliente);
+        
+        // Botones apilados y centrados (X = (450 - 200) / 2 = 125)
+        buttonVerZonas.setBounds(125, 100, 200, 35);
+        panelFormulario.add(buttonVerZonas);
+        
+        buttonComprarEntradas.setBounds(125, 150, 200, 35);
+        panelFormulario.add(buttonComprarEntradas);
+        
+        buttonHistorialCompras.setBounds(125, 200, 200, 35);
+        panelFormulario.add(buttonHistorialCompras);
+        
+        buttonCerrarSesion.setBounds(125, 250, 200, 35);
+        panelFormulario.add(buttonCerrarSesion);
+
+        // 4. GridBagLayout al panel principal para centrar la caja interior
+        this.setLayout(new java.awt.GridBagLayout());
+        this.add(panelFormulario);
+        
+        // 5. Refrescar la pantalla
+        this.revalidate();
+        this.repaint();
     }
 
     /**
@@ -25,6 +65,7 @@ public class PanelCliente extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         lblBienvenidoCliente = new javax.swing.JLabel();
         buttonVerZonas = new javax.swing.JButton();
@@ -32,59 +73,56 @@ public class PanelCliente extends javax.swing.JPanel {
         buttonHistorialCompras = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
 
+        setLayout(new java.awt.GridBagLayout());
+
         lblBienvenidoCliente.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
-        lblBienvenidoCliente.setText("¡Bienvenido al Sistema!");
+        lblBienvenidoCliente.setText("¡Bienvenido!");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 14, 0, 6);
+        add(lblBienvenidoCliente, gridBagConstraints);
 
         buttonVerZonas.setText("Ver Zonas");
+        buttonVerZonas.addActionListener(this::buttonVerZonasActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 229, 0, 0);
+        add(buttonVerZonas, gridBagConstraints);
 
         buttonComprarEntradas.setText("Comprar Entradas");
+        buttonComprarEntradas.addActionListener(this::buttonComprarEntradasActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 196, 0, 0);
+        add(buttonComprarEntradas, gridBagConstraints);
 
         buttonHistorialCompras.setText("Historial de Compras");
         buttonHistorialCompras.addActionListener(this::buttonHistorialComprasActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 188, 0, 0);
+        add(buttonHistorialCompras, gridBagConstraints);
 
         buttonCerrarSesion.setText("Cerrar Sesion");
         buttonCerrarSesion.addActionListener(this::buttonCerrarSesionActionPerformed);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblBienvenidoCliente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonHistorialCompras)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonComprarEntradas)
-                                .addGap(8, 8, 8)))
-                        .addGap(171, 171, 171))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonCerrarSesion)
-                        .addGap(193, 193, 193))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonVerZonas)
-                        .addGap(201, 201, 201))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblBienvenidoCliente)
-                .addGap(18, 18, 18)
-                .addComponent(buttonVerZonas)
-                .addGap(31, 31, 31)
-                .addComponent(buttonComprarEntradas)
-                .addGap(26, 26, 26)
-                .addComponent(buttonHistorialCompras)
-                .addGap(27, 27, 27)
-                .addComponent(buttonCerrarSesion)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 212, 43, 0);
+        add(buttonCerrarSesion, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonHistorialComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHistorialComprasActionPerformed
@@ -95,7 +133,20 @@ public class PanelCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCerrarSesionActionPerformed
 
+    private void buttonVerZonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerZonasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonVerZonasActionPerformed
 
+    private void buttonComprarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonComprarEntradasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonComprarEntradasActionPerformed
+
+    // --- GETTERS PARA EL FUTURO CONTROLADOR CLIENTE ---
+    public javax.swing.JButton getButtonVerZonas() { return buttonVerZonas; }
+    public javax.swing.JButton getButtonComprarEntradas() { return buttonComprarEntradas; }
+    public javax.swing.JButton getButtonHistorialCompras() { return buttonHistorialCompras; }
+    public javax.swing.JButton getButtonCerrarSesion() { return buttonCerrarSesion; }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCerrarSesion;
     private javax.swing.JButton buttonComprarEntradas;

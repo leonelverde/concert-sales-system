@@ -3,12 +3,13 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 import modelo.excepciones.EntradaLimiteException;
 import modelo.excepciones.CapacidadExcedidaException;
 import modelo.excepciones.EntradaNoDisponibleException;
 
-public class Cliente extends Persona{
+public class Cliente extends Persona implements Serializable{
     private Integer puntos;
     private List<Venta> historialCompras;
     private List<Tarjeta> tarjetasRegistradas;
@@ -16,7 +17,7 @@ public class Cliente extends Persona{
     private Zona zonaSeleccionada;
     private Tarjeta tarjetaSeleccionada;
     
-    public Cliente(String nombres, String apellidos, String dni, String contraseña, String usuario, Integer puntos){
+    public Cliente(String nombres, String apellidos, String dni, String usuario, String contraseña, Integer puntos){
         super(nombres, apellidos, dni, usuario, contraseña);
         this.puntos = puntos;
         this.historialCompras = new ArrayList<>();
@@ -24,7 +25,7 @@ public class Cliente extends Persona{
         
     }
     
-    private void ingresar (String usuario, String clave){}
+    private void ingresar (String usuario, String contraseña){}
     
     public void registrarTarjeta(Tarjeta tarjeta) {
         this.tarjetasRegistradas.add(tarjeta);

@@ -235,18 +235,25 @@ public class PanelRegistro extends javax.swing.JPanel {
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
         // TODO add your handling code here:
-        java.awt.Container contenedorPadre = this.getParent();
-        
-        java.awt.CardLayout administradorCartas = (java.awt.CardLayout) contenedorPadre.getLayout();
-        
-        administradorCartas.show(contenedorPadre, "login");
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombresActionPerformed
 
-
+    // --- GETTERS PARA EL CONTROLADOR ---
+    public javax.swing.JTextField getTxtNombres() { return txtNombres; }
+    public javax.swing.JTextField getTxtApellidos() { return txtApellidos; }
+    public javax.swing.JTextField getTxtDni() { return txtDni; }
+    public javax.swing.JTextField getTxtUsuario() { return txtUsuario; }
+    public javax.swing.JPasswordField getTxtPassword() { return txtPassword; }
+    public javax.swing.JButton getButtonCreateAccount() { return buttonCreateAccount; }
+    public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    
+    // Método temporal por si aún no agregas el campo del código secreto para el Admin
+    public String getCodigoAdmin() { return ""; }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblApellidos;
     private javax.swing.JLabel LblDni;

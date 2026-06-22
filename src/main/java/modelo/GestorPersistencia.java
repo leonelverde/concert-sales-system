@@ -10,7 +10,7 @@ public class GestorPersistencia implements Serializable{
     
     private static final String RUTA_ARCHIVO = "datos_usuarios.dat";
 
-    // Guarda una nueva persona (Cliente o Usuario) en el archivo
+    // Guarda una nueva persona en el archivo
     public boolean guardarPersona(Persona nuevaPersona) {
         List<Persona> lista = leerTodasLasPersonas();
         
@@ -60,18 +60,4 @@ public class GestorPersistencia implements Serializable{
         return lista;
     }
     
-    // Herramienta temporal para depurar en consola
-    public void imprimirDatosEnConsola() {
-        List<Persona> lista = leerTodasLasPersonas();
-        System.out.println("\n=== DEPURACIÓN DE ARCHIVO .DAT ===");
-        System.out.println("Usuarios registrados en disco: " + lista.size());
-        
-        for (Persona p : lista) {
-            System.out.println("Clase instanciada: " + p.getClass().getSimpleName());
-            // Usamos corchetes [ ] para detectar si se coló algún espacio en blanco al inicio o final
-            System.out.println("Usuario guardado: [" + p.getUsuario() + "]");
-            System.out.println("Contraseña guardada: [" + p.getContraseña() + "]");
-            System.out.println("----------------------------------");
-        }
-    }
 }

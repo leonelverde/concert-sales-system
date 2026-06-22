@@ -30,11 +30,11 @@ public class PanelLogin extends javax.swing.JPanel {
         LblIniciarSesion.setBounds(30, 20, 340, 40);
         panelFormulario.add(LblIniciarSesion);
         
-        LblUser.setBounds(50, 100, 100, 30);
-        panelFormulario.add(LblUser);
+        LbleEmail.setBounds(50, 100, 100, 30);
+        panelFormulario.add(LbleEmail);
         
-        txtUser.setBounds(150, 100, 180, 30);
-        panelFormulario.add(txtUser);
+        txtEmail.setBounds(150, 100, 180, 30);
+        panelFormulario.add(txtEmail);
         
         LblPassword.setBounds(50, 150, 100, 30);
         panelFormulario.add(LblPassword);
@@ -71,9 +71,9 @@ public class PanelLogin extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        LblUser = new javax.swing.JLabel();
+        LbleEmail = new javax.swing.JLabel();
         LblPassword = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         buttonLogin = new javax.swing.JButton();
         buttonRegistrarse = new javax.swing.JButton();
         LblNoAccount = new javax.swing.JLabel();
@@ -83,15 +83,15 @@ public class PanelLogin extends javax.swing.JPanel {
         setName(""); // NOI18N
         setLayout(new java.awt.GridBagLayout());
 
-        LblUser.setText("Usuario");
+        LbleEmail.setText("Email:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(40, 92, 0, 0);
-        add(LblUser, gridBagConstraints);
+        add(LbleEmail, gridBagConstraints);
 
-        LblPassword.setText("Contraseña");
+        LblPassword.setText("Contraseña:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -100,8 +100,8 @@ public class PanelLogin extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 80, 0, 0);
         add(LblPassword, gridBagConstraints);
 
-        txtUser.setColumns(10);
-        txtUser.addActionListener(this::txtUserActionPerformed);
+        txtEmail.setColumns(10);
+        txtEmail.addActionListener(this::txtEmailActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -109,7 +109,7 @@ public class PanelLogin extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(37, 16, 0, 0);
-        add(txtUser, gridBagConstraints);
+        add(txtEmail, gridBagConstraints);
 
         buttonLogin.setText("Ingresar");
         buttonLogin.addActionListener(this::buttonLoginActionPerformed);
@@ -170,9 +170,9 @@ public class PanelLogin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonLoginActionPerformed
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordFieldActionPerformed
         // TODO add your handling code here:
@@ -183,17 +183,17 @@ public class PanelLogin extends javax.swing.JPanel {
     private javax.swing.JLabel LblIniciarSesion;
     private javax.swing.JLabel LblNoAccount;
     private javax.swing.JLabel LblPassword;
-    private javax.swing.JLabel LblUser;
+    private javax.swing.JLabel LbleEmail;
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonRegistrarse;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPasswordField;
-    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
     
     
     // --- GETTERS PARA EL CONTROLADOR ---
-    public javax.swing.JTextField getTxtUser() { return txtUser; }
-    public javax.swing.JPasswordField getTxtPasswordField() { return txtPasswordField; }
+    public javax.swing.JTextField getTxtEmail() { return txtEmail; }
+    public javax.swing.JPasswordField getTxtPassword() { return txtPasswordField; }
     public javax.swing.JButton getButtonLogin() { return buttonLogin; }
     public javax.swing.JButton getButtonRegistrarse() { return buttonRegistrarse; }
 }

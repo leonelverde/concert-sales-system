@@ -51,7 +51,7 @@ public class Vista extends javax.swing.JFrame {
         
         // B) Instanciamos el Controlador y le pasamos todas las piezas que necesita gobernar
         // (La vista de login, la vista de registro, el modelo de datos, y el contenedor principal jPanel1)
-        controlador.ControladorAutentication controladorAuth = new controlador.ControladorAutentication(
+        controlador.ControladorLogin controladorAuth = new controlador.ControladorLogin(
             panelLogin, 
             panelRegistro, 
             modeloPersistencia, 

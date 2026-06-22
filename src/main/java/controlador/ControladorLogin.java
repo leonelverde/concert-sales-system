@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 
-public class ControladorAutentication {
+public class ControladorLogin {
     
     private PanelLogin vistaLogin;
     private PanelRegistro vistaRegistro;
@@ -19,17 +19,17 @@ public class ControladorAutentication {
 
     private ControladorCliente controladorCliente;
     
-    public ControladorAutentication(PanelLogin vistaLogin, PanelRegistro vistaRegistro, GestorPersistencia modeloPersistencia, Container contenedorPrincipal, ControladorCliente controladorCliente) {
+    public ControladorLogin(PanelLogin vistaLogin, PanelRegistro vistaRegistro, GestorPersistencia modeloPersistencia, Container contenedorPrincipal, ControladorCliente controladorCliente) {
         this.vistaLogin = vistaLogin;
         this.vistaRegistro = vistaRegistro;
         this.modeloPersistencia = modeloPersistencia;
         this.contenedorPrincipal = contenedorPrincipal;
         this.controladorCliente = controladorCliente;
         
-        this.inicializarEventos();
+        this.iniciar();
     }
 
-    private void inicializarEventos() {
+    private void iniciar() {
         this.vistaLogin.getButtonLogin().addActionListener(e -> validarLogin());
         this.vistaLogin.getButtonRegistrarse().addActionListener(e -> irARegistro());
         
@@ -38,8 +38,8 @@ public class ControladorAutentication {
     }
 
     private void validarLogin() {
-        String user = vistaLogin.getTxtUser().getText();
-        String pass = new String(vistaLogin.getTxtPasswordField().getPassword());
+        String user = vistaLogin.getTxtEmail().getText();
+        String pass = new String(vistaLogin.getTxtPassword().getPassword());
 
         Persona personaLogeada = modeloPersistencia.verificarCredenciales(user, pass);
 
@@ -58,10 +58,6 @@ public class ControladorAutentication {
             JOptionPane.showMessageDialog(vistaLogin, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        // 1. IMPRIMIR EN CONSOLA LO QUE HAY EN EL DISCO
-        modeloPersistencia.imprimirDatosEnConsola();
-        
-        System.out.println("Intentando ingresar con -> Usuario: [" + user + "] Pass: [" + pass + "]");
     }
 
     private void registrarUsuario() {
@@ -119,8 +115,8 @@ public class ControladorAutentication {
     }
 
     private void limpiarCamposLogin() {
-        vistaLogin.getTxtUser().setText("");
-        vistaLogin.getTxtPasswordField().setText("");
+        vistaLogin.getTxtEmail().setText("");
+        vistaLogin.getTxtPassword().setText("");
     }
 
     private void limpiarCamposRegistro() {

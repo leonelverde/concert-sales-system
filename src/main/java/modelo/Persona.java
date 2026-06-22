@@ -9,14 +9,14 @@ public abstract class Persona implements Serializable{
     private String nombres;
     private String apellidos;
     private String dni;
-    protected String usuario;
+    protected String email;
     private String contraseña;
     
-    public Persona(String nombres, String apellidos, String dni, String usuario, String contraseña){ 
+    public Persona(String nombres, String apellidos, String dni, String email, String contraseña){ 
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.dni = dni;
-        this.usuario = usuario;
+        this.email = email;
         this.contraseña = contraseña;
     }
     
@@ -30,6 +30,6 @@ public abstract class Persona implements Serializable{
     
     public abstract Boolean comprar(int cantidad) throws EntradaLimiteException, CapacidadExcedidaException, EntradaNoDisponibleException;
     
-    public String getUsuario() { return usuario; } 
+    public String getEmail() { return email; } 
     public String getContraseña() { return contraseña; }
 }

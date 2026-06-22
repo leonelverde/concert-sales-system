@@ -29,6 +29,7 @@ public class Vista extends javax.swing.JFrame {
         PanelCliente panelCliente = new PanelCliente();
         PanelAdmin panelAdmin = new PanelAdmin();
         PanelComprarEntradas panelCompra = new PanelComprarEntradas();
+        PanelConciertosDisponibles panelConciertosDisponibles = new PanelConciertosDisponibles();
         
         // 2. Los agregamos al jPanel1 dándoles su "Card Name"
         jPanel1.add(panelLogin, "login");
@@ -36,6 +37,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel1.add(panelCliente, "cliente");
         jPanel1.add(panelAdmin, "admin");
         jPanel1.add(panelCompra, "comprar");
+        jPanel1.add(panelConciertosDisponibles, "conciertosDisponibles");
         
         // --- 3. INICIALIZAR LA ARQUITECTURA MVC ---
         

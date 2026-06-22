@@ -15,7 +15,7 @@ public class Serializador {
         }
     }
     
-    public static Object deserealizar(String sNombreArchivo){
+    public static Object deserializar(String sNombreArchivo){
         Object obj = new Object();
         try{
             ObjectInputStream lector = new ObjectInputStream(new FileInputStream(sNombreArchivo));

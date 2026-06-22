@@ -38,10 +38,10 @@ public class ControladorLogin {
     }
 
     private void validarLogin() {
-        String user = vistaLogin.getTxtEmail().getText();
+        String email = vistaLogin.getTxtEmail().getText();
         String pass = new String(vistaLogin.getTxtPassword().getPassword());
 
-        Persona personaLogeada = modeloPersistencia.verificarCredenciales(user, pass);
+        Persona personaLogeada = modeloPersistencia.verificarCredenciales(email, pass);
 
         if (personaLogeada != null) {
             CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
@@ -64,13 +64,13 @@ public class ControladorLogin {
         String nombres = vistaRegistro.getTxtNombres().getText();
         String apellidos = vistaRegistro.getTxtApellidos().getText();
         String dni = vistaRegistro.getTxtDni().getText(); 
-        String user = vistaRegistro.getTxtUsuario().getText();
+        String email = new String(vistaRegistro.getTxtEmail().getText());
         String pass = new String(vistaRegistro.getTxtPassword().getPassword());
         
         // Usamos el getter temporal que devuelve ""
         String codigoAdmin = vistaRegistro.getCodigoAdmin(); 
 
-        if (nombres.isEmpty() || apellidos.isEmpty() || dni.isEmpty() || user.isEmpty() || pass.isEmpty()) {
+        if (nombres.isEmpty() || apellidos.isEmpty() || dni.isEmpty() || email.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(vistaRegistro, "Llene todos los campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -79,10 +79,10 @@ public class ControladorLogin {
         
         if (codigoAdmin.equals("SISTEMAS-2026")) { 
             // Usamos Boolean.TRUE para respetar el tipo envoltorio de tu clase
-            nuevaPersona = new Usuario(nombres, apellidos, dni, user, pass, Boolean.TRUE); 
+            nuevaPersona = new Usuario(nombres, apellidos, dni, email, pass, Boolean.TRUE); 
         } else {
             // Usamos Integer.valueOf(0) para respetar el tipo envoltorio de tu clase
-            nuevaPersona = new Cliente(nombres, apellidos, dni, user, pass, Integer.valueOf(0)); 
+            nuevaPersona = new Cliente(nombres, apellidos, dni, email, pass, Integer.valueOf(0)); 
         }
 
         boolean registrado = modeloPersistencia.guardarPersona(nuevaPersona);
@@ -123,7 +123,6 @@ public class ControladorLogin {
         vistaRegistro.getTxtNombres().setText("");
         vistaRegistro.getTxtApellidos().setText("");
         vistaRegistro.getTxtDni().setText(""); 
-        vistaRegistro.getTxtUsuario().setText("");
         vistaRegistro.getTxtPassword().setText("");
     }
 }

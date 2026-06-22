@@ -47,11 +47,11 @@ public class PanelRegistro extends javax.swing.JPanel {
         txtDni.setBounds(150, 180, 180, 30);
         panelFormulario.add(txtDni);
         
-        LblUsuario.setBounds(50, 230, 100, 30);
-        panelFormulario.add(LblUsuario);
+        lblEmail.setBounds(50, 230, 100, 30);
+        panelFormulario.add(lblEmail);
         
-        txtUsuario.setBounds(150, 230, 180, 30);
-        panelFormulario.add(txtUsuario);
+        txtEmail.setBounds(150, 230, 180, 30);
+        panelFormulario.add(txtEmail);
         
         LblPassword.setBounds(50, 280, 100, 30);
         panelFormulario.add(LblPassword);
@@ -95,8 +95,8 @@ public class PanelRegistro extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         buttonCreateAccount = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
-        LblUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         lblRegistrarse = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
@@ -196,14 +196,14 @@ public class PanelRegistro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 79, 31, 0);
         add(buttonVolver, gridBagConstraints);
 
-        LblUsuario.setText("Usuario");
+        lblEmail.setText("Email");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 89, 0, 0);
-        add(LblUsuario, gridBagConstraints);
+        add(lblEmail, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 7;
@@ -212,7 +212,7 @@ public class PanelRegistro extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 68, 0, 0);
-        add(txtUsuario, gridBagConstraints);
+        add(txtEmail, gridBagConstraints);
 
         lblRegistrarse.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
         lblRegistrarse.setText("Registrarse");
@@ -245,7 +245,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     public javax.swing.JTextField getTxtNombres() { return txtNombres; }
     public javax.swing.JTextField getTxtApellidos() { return txtApellidos; }
     public javax.swing.JTextField getTxtDni() { return txtDni; }
-    public javax.swing.JTextField getTxtUsuario() { return txtUsuario; }
+    public javax.swing.JTextField getTxtEmail() {return txtEmail; }
     public javax.swing.JPasswordField getTxtPassword() { return txtPassword; }
     public javax.swing.JButton getButtonCreateAccount() { return buttonCreateAccount; }
     public javax.swing.JButton getButtonVolver() { return buttonVolver; }
@@ -259,14 +259,14 @@ public class PanelRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel LblDni;
     private javax.swing.JLabel LblNombres;
     private javax.swing.JLabel LblPassword;
-    private javax.swing.JLabel LblUsuario;
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonVolver;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblRegistrarse;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,7 +16,7 @@ public class GestorPersistencia implements Serializable{
         
         // Verificar que el usuario no exista ya
         for (Persona p : lista) {
-            if (p.getUsuario().equals(nuevaPersona.getUsuario())) {
+            if (p.getEmail().equals(nuevaPersona.getEmail())) {
                 return false; // El nombre de usuario ya está tomado
             }
         }
@@ -38,7 +38,7 @@ public class GestorPersistencia implements Serializable{
         List<Persona> lista = leerTodasLasPersonas();
         
         for (Persona p : lista) {
-            if (p.getUsuario().equals(usuarioStr) && p.getContraseña().equals(passStr)) {
+            if (p.getEmail().equals(usuarioStr) && p.getContraseña().equals(passStr)) {
                 return p; // Retorna el Cliente o Usuario encontrado
             }
         }

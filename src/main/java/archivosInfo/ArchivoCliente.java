@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.Serializable;
 
 public class ArchivoCliente implements Serializable{
-    private String path;
+    private static String path;
     
     public ArchivoCliente(){
         this.path = "datos_cliente.dat";
@@ -20,7 +20,7 @@ public class ArchivoCliente implements Serializable{
         }
     }
     
-    public boolean guardarCliente(Cliente[] clientes, int numClientes){
+    public static boolean guardarCliente(Cliente[] clientes, int numClientes){
         try{
             Cliente[] arregloAux = new Cliente[numClientes];
             for(int i=0; i<numClientes; i++){
@@ -35,12 +35,13 @@ public class ArchivoCliente implements Serializable{
         }
     }
     
-    public Cliente[] cargarCliente(){
+    public static Cliente[] cargarCliente(){
         try{
             File archivo = new File(path);
             
             if(archivo.exists()){
                 Object obj = Serializador.deserializar(path);
+                return (Cliente[]) obj;
             } else {return new Cliente[0];}
         } catch(Exception e){
             System.out.println("Error al cargar Clientes: " + e.getMessage());

@@ -15,6 +15,30 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
      */
     public PanelConciertosDisponibles() {
         initComponents();
+        
+        this.removeAll();
+        
+        // 2. Creamos la "caja" interna del formulario (Altura aumentada a 400)
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        panelFormulario.setPreferredSize(new java.awt.Dimension(450, 400));
+        panelFormulario.setLayout(null); 
+        
+        // 3. Acomodamos los componentes con setBounds(X, Y, Ancho, Alto)
+        
+        // Título principal centrado
+        lblConciertosDisponibles.setBounds(25, 20, 300, 50);
+        lblConciertosDisponibles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelFormulario.add(lblConciertosDisponibles);
+        
+        jTableConciertosDisponibles.setBounds(30, 100, 390, 380);
+        panelFormulario.add(jTableConciertosDisponibles);
+        
+        this.setLayout(new java.awt.GridBagLayout());
+        this.add(panelFormulario);
+        
+        // 5. Refrescamos la pantalla
+        this.revalidate();
+        this.repaint();
     }
 
     /**
@@ -25,20 +49,60 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableConciertosDisponibles = new javax.swing.JTable();
+        lblConciertosDisponibles = new javax.swing.JLabel();
+
+        setLayout(new java.awt.GridBagLayout());
+
+        jTableConciertosDisponibles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Fecha", "Zonas"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableConciertosDisponibles);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 359;
+        gridBagConstraints.ipady = 255;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(26, 36, 18, 39);
+        add(jScrollPane1, gridBagConstraints);
+
+        lblConciertosDisponibles.setFont(new java.awt.Font("Nimbus Mono PS", 3, 24)); // NOI18N
+        lblConciertosDisponibles.setText("Conciertos Disponibles");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 66, 0, 0);
+        add(lblConciertosDisponibles, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableConciertosDisponibles;
+    private javax.swing.JLabel lblConciertosDisponibles;
     // End of variables declaration//GEN-END:variables
 }

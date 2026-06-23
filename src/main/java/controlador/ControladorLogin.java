@@ -8,7 +8,9 @@ import modelo.Usuario;
 import modelo.GestorPersistencia;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.util.List;
 import javax.swing.JOptionPane;
+import archivosInfo.ArchivoCliente;
 
 public class ControladorLogin {
     
@@ -36,7 +38,18 @@ public class ControladorLogin {
         this.vistaRegistro.getButtonCreateAccount().addActionListener(e -> registrarUsuario());
         this.vistaRegistro.getButtonVolver().addActionListener(e -> irALogin());
     }
-
+    
+    public Cliente verificarCredenciales(String usuarioStr, String passStr) {
+        Cliente[] lista = ArchivoCliente.cargarCliente();
+        
+        for(Cliente c : lista){
+            if(c.getEmail().equalsIgnoreCase(usuarioStr) && c.getContraseña().equalsIgnoreCase(passStr)){
+                return c;
+            }
+        }
+        return null;
+    }
+      
     private void validarLogin() {
         String email = vistaLogin.getTxtEmail().getText();
         String pass = new String(vistaLogin.getTxtPassword().getPassword());

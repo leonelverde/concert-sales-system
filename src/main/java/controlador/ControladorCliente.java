@@ -94,10 +94,6 @@ public class ControladorCliente {
         }
     }
 
-    private void mostrarEstadisticas() {
-        //JOptionPane.showMessageDialog(vistaCompra, "Módulo de estadísticas en construcción.");
-    }
-
     private void limpiarFormularioCompra() {
         vistaCompra.getCboCantidadEntradas().setSelectedIndex(0);
         vistaCompra.getTxtTarjeta().setText("");

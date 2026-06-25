@@ -27,14 +27,15 @@ public class PanelAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         lblBienvenidoAdmin = new javax.swing.JLabel();
-        buttonGestionarZonas = new javax.swing.JButton();
+        btnRegistrarConcierto = new javax.swing.JButton();
         buttonSupervisarVentas = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
 
         lblBienvenidoAdmin.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
-        lblBienvenidoAdmin.setText("¡Bienvenido, Administrador!");
+        lblBienvenidoAdmin.setText("¡Bienvenido!");
 
-        buttonGestionarZonas.setText("Gestionar Zonas");
+        btnRegistrarConcierto.setText("Registrar Concierto");
+        btnRegistrarConcierto.addActionListener(this::btnRegistrarConciertoActionPerformed);
 
         buttonSupervisarVentas.setText("Supervisar Ventas");
         buttonSupervisarVentas.addActionListener(this::buttonSupervisarVentasActionPerformed);
@@ -47,33 +48,32 @@ public class PanelAdmin extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBienvenidoAdmin)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblBienvenidoAdmin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(buttonGestionarZonas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(buttonSupervisarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(buttonCerrarSesion)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSupervisarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrarConcierto))))
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCerrarSesion)
+                .addGap(163, 163, 163))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(42, 42, 42)
                 .addComponent(lblBienvenidoAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(buttonGestionarZonas)
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
+                .addComponent(btnRegistrarConcierto)
+                .addGap(28, 28, 28)
                 .addComponent(buttonSupervisarVentas)
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
                 .addComponent(buttonCerrarSesion)
-                .addGap(70, 70, 70))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -85,11 +85,20 @@ public class PanelAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCerrarSesionActionPerformed
 
+    private void btnRegistrarConciertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarConciertoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarConciertoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrarConcierto;
     private javax.swing.JButton buttonCerrarSesion;
-    private javax.swing.JButton buttonGestionarZonas;
     private javax.swing.JButton buttonSupervisarVentas;
     private javax.swing.JLabel lblBienvenidoAdmin;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getButtonRegistrarConcierto() { return btnRegistrarConcierto; }
+    public javax.swing.JButton getButtonSupervisarVentas() { return buttonSupervisarVentas; }
+    public javax.swing.JButton getButtonCerrarSesion() { return buttonCerrarSesion; }
+
 }

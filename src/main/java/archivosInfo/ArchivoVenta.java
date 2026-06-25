@@ -17,7 +17,7 @@ public class ArchivoVenta implements Serializable{
         }
     }
     
-    public boolean guardarVentas(Venta[] ventas, int numVentas){
+    public static boolean guardarVentas(Venta[] ventas, int numVentas){
         try{
             Venta[] arregloAux = new Venta[numVentas];
             for(int i=0; i<numVentas; i++){
@@ -32,12 +32,13 @@ public class ArchivoVenta implements Serializable{
         }
     }
     
-    public Venta[] cargarVenta(){
+    public static Venta[] cargarVentas(){
         try{
             File archivo = new File(path);
             
             if(archivo.exists()){
                 Object obj = Serializador.deserializar(path);
+                return (Venta[]) obj;
             } else {return new Venta[0];}
         } catch(Exception e){
             System.out.println("Error al cargar Ventas: " + e.getMessage());

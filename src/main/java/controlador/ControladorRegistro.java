@@ -8,8 +8,8 @@ import modelo.Persona;
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
-import archivosInfo.ArchivoCliente;
-import archivosInfo.ArchivoUsuario;
+import coleccion.ColeccionCliente;
+import coleccion.ColeccionUsuario;
 
 public class ControladorRegistro {
     private PanelRegistro vistaRegistro;
@@ -90,41 +90,20 @@ public class ControladorRegistro {
     }
 
     private boolean guardarNuevaPersona(Persona p) {
-        // Si la Persona resulta ser un Administrador, se guarda en datos_usuario.dat
-        if (p instanceof Usuario) {
-            Usuario nuevoAdmin = (Usuario) p;
-            Usuario[] listaActual = ArchivoUsuario.cargarUsuarios();
-            Usuario[] nuevaLista = new Usuario[listaActual.length + 1];
-            
-            for (int i = 0; i < listaActual.length; i++) {
-                nuevaLista[i] = listaActual[i];
-            }
-            nuevaLista[listaActual.length] = nuevoAdmin;
-            
-            return ArchivoUsuario.guardarUsuarios(nuevaLista, nuevaLista.length);
-            
-        // Si la Persona resulta ser un Cliente, se guarda en datos_cliente.dat
-        } else if (p instanceof Cliente) {
-            Cliente nuevoCliente = (Cliente) p;
-            Cliente[] listaActual = ArchivoCliente.cargarCliente();
-            Cliente[] nuevaLista = new Cliente[listaActual.length + 1];
-            
-            for (int i = 0; i < listaActual.length; i++) {
-                nuevaLista[i] = listaActual[i];
-            }
-            nuevaLista[listaActual.length] = nuevoCliente;
-            
-            return ArchivoCliente.guardarCliente(nuevaLista, nuevaLista.length);
-        }
         
+        if (p instanceof Usuario) {
+            return ColeccionUsuario.agregarUsuario((Usuario) p);
+        } else if (p instanceof Cliente) {
+            return ColeccionCliente.agregarCliente((Cliente) p);
+        }
         return false;
     }
 
     private boolean existeCorreo(String emailBuscado) {
-        for (Cliente c : ArchivoCliente.cargarCliente()) {
+        for (Cliente c : ColeccionCliente.obtenerClientes()) {
             if (c.getEmail().equalsIgnoreCase(emailBuscado)) return true;
         }
-        for (Usuario u : ArchivoUsuario.cargarUsuarios()) {
+        for (Usuario u : ColeccionUsuario.obtenerUsuarios()) {
             if (u.getEmail().equalsIgnoreCase(emailBuscado)) return true;
         }
         return false;

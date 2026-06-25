@@ -17,7 +17,7 @@ public class ArchivoCliente implements Serializable{
         }
     }
     
-    public static boolean guardarCliente(Cliente[] clientes, int numClientes){
+    public static boolean guardarClientes(Cliente[] clientes, int numClientes){
         try{
             Cliente[] arregloAux = new Cliente[numClientes];
             for(int i=0; i<numClientes; i++){
@@ -32,7 +32,7 @@ public class ArchivoCliente implements Serializable{
         }
     }
     
-    public static Cliente[] cargarCliente(){
+    public static Cliente[] cargarClientes(){
         try{
             File archivo = new File(path);
             

@@ -18,7 +18,7 @@ public class ArchivoConcierto implements Serializable{
         }
     }
     
-    public boolean guardarConcierto(Concierto[] concierto, int numConciertos){
+    public static boolean guardarConciertos(Concierto[] concierto, int numConciertos){
         try{
             Concierto[] arregloAux = new Concierto[numConciertos];
             for(int i=0; i<numConciertos; i++){
@@ -33,13 +33,15 @@ public class ArchivoConcierto implements Serializable{
         }
     }
     
-    public Concierto[] cargarConcierto(){
+    public static Concierto[] cargarConciertos(){
         try{
             File archivo = new File(path);
             
             if(archivo.exists()){
                 Object obj = Serializador.deserializar(path);
-            } else {return new Concierto[0];}
+                return (Concierto[]) obj;
+            } else {
+                return new Concierto[0];}
         } catch(Exception e){
             System.out.println("Error al cargar Conciertos: " + e.getMessage());
         }

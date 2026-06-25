@@ -30,6 +30,8 @@ public class Vista extends javax.swing.JFrame {
         PanelAdmin panelAdmin = new PanelAdmin();
         PanelComprarEntradas panelCompra = new PanelComprarEntradas();
         PanelConciertosDisponibles panelConciertosDisponibles = new PanelConciertosDisponibles();
+        PanelRegistrarConcierto panelRegistrarConcierto = new PanelRegistrarConcierto();
+        PanelSupervisarVentas panelSupervisarVentas = new PanelSupervisarVentas();
         
         // 2. Los agregamos al jPanel1 dándoles su "Card Name"
         jPanel1.add(panelLogin, "login");
@@ -38,6 +40,8 @@ public class Vista extends javax.swing.JFrame {
         jPanel1.add(panelAdmin, "admin");
         jPanel1.add(panelCompra, "comprar");
         jPanel1.add(panelConciertosDisponibles, "conciertosDisponibles");
+        jPanel1.add(panelRegistrarConcierto, "registrarConcierto");
+        jPanel1.add(panelSupervisarVentas, "supervisarVentas");
         
         // --- 3. INICIALIZAR LA ARQUITECTURA MVC ---
         
@@ -50,12 +54,18 @@ public class Vista extends javax.swing.JFrame {
             jPanel1
         );
         
+        controlador.ControladorAdmin cAdmin = new controlador.ControladorAdmin(
+            panelAdmin, 
+            jPanel1
+        );
+        
         // B) Instanciamos el Controlador y le pasamos todas las piezas que necesita gobernar
         // (La vista de login, la vista de registro, el modelo de datos, y el contenedor principal jPanel1)
         controlador.ControladorLogin controladorAuth = new controlador.ControladorLogin(
             panelLogin, 
             jPanel1,
-            cCliente
+            cCliente,
+            cAdmin
         );
         
         controlador.ControladorRegistro controlRegistro = new controlador.ControladorRegistro(

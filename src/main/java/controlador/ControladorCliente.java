@@ -40,7 +40,6 @@ public class ControladorCliente {
         this.vistaCliente.getButtonCerrarSesion().addActionListener(e -> cerrarSesion());
         
         this.vistaCompra.getBtnComprar().addActionListener(e -> procesarCompra());
-        this.vistaCompra.getBtnEstadisticas().addActionListener(e -> mostrarEstadisticas());
         
         this.vistaCompra.getBtnVolver().addActionListener(e -> volverAlMenuCliente());
     }
@@ -54,7 +53,7 @@ public class ControladorCliente {
         try {
             // 1. Extraemos los datos escritos por el usuario en los JTextFields
             String nombreZona = (String) vistaCompra.getCboZonas().getSelectedItem();
-            int cantidad = Integer.parseInt(vistaCompra.getTxtCantidad().getText());
+            Integer cantidadEntradas = (Integer) vistaCompra.getCboCantidadEntradas().getSelectedItem();
             int numeroTarjeta = Integer.parseInt(vistaCompra.getTxtTarjeta().getText());
 
             // 2. Instanciamos los objetos necesarios (Más adelante esto lo buscará el GestorConciertos)
@@ -69,7 +68,7 @@ public class ControladorCliente {
             clienteSesion.setTarjetaSeleccionada(tarjetaUsada);
 
             // 4. ¡La compra real! (Esto activará tus excepciones si se rompen las reglas)
-            boolean exito = clienteSesion.comprar(cantidad);
+            boolean exito = clienteSesion.comprar(cantidadEntradas);
 
             if (exito) {
                 JOptionPane.showMessageDialog(vistaCompra, "¡Compra realizada con éxito!\nSe generó la venta en tu historial.", "Transacción Aprobada", JOptionPane.INFORMATION_MESSAGE);
@@ -100,7 +99,7 @@ public class ControladorCliente {
     }
 
     private void limpiarFormularioCompra() {
-        vistaCompra.getTxtCantidad().setText("");
+        vistaCompra.getCboCantidadEntradas().setSelectedIndex(0);
         vistaCompra.getTxtTarjeta().setText("");
         vistaCompra.getCboZonas().setSelectedIndex(0);
     }

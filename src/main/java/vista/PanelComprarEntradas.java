@@ -21,7 +21,7 @@ public class PanelComprarEntradas extends javax.swing.JPanel {
         
         // 2. Creamos la "caja" interna del formulario (Altura aumentada a 400)
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
-        panelFormulario.setPreferredSize(new java.awt.Dimension(450, 400));
+        panelFormulario.setPreferredSize(new java.awt.Dimension(450, 350));
         panelFormulario.setLayout(null); 
         
         // 3. Acomodamos los componentes con setBounds(X, Y, Ancho, Alto)
@@ -42,8 +42,8 @@ public class PanelComprarEntradas extends javax.swing.JPanel {
         lblCantidadEntradas.setBounds(70, 150, 150, 30);
         panelFormulario.add(lblCantidadEntradas);
         
-        txtCantidad.setBounds(220, 150, 160, 30);
-        panelFormulario.add(txtCantidad);
+        cboCantidadEntradas.setBounds(220, 150, 160, 30);
+        panelFormulario.add(cboCantidadEntradas);
         
         // Fila 3: Nro de Tarjeta
         lblNroTarjeta.setBounds(70, 200, 150, 30);
@@ -56,12 +56,9 @@ public class PanelComprarEntradas extends javax.swing.JPanel {
         btnComprar.setBounds(70, 270, 140, 35);
         panelFormulario.add(btnComprar);
         
-        btnEstadisticas.setBounds(240, 270, 140, 35);
-        panelFormulario.add(btnEstadisticas);
-        
-        // Fila 5: Botón Volver (Centrado debajo de los anteriores)
-        btnVolver.setBounds(155, 325, 140, 35);
+        btnVolver.setBounds(240, 270, 140, 35);
         panelFormulario.add(btnVolver);
+        
         
         // 4. Centramos el formulario en el panel principal
         this.setLayout(new java.awt.GridBagLayout());
@@ -80,125 +77,114 @@ public class PanelComprarEntradas extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         lblZona = new javax.swing.JLabel();
         lblCantidadEntradas = new javax.swing.JLabel();
         cboZonas = new javax.swing.JComboBox<>();
-        txtCantidad = new javax.swing.JTextField();
         btnComprar = new javax.swing.JButton();
         lblNroTarjeta = new javax.swing.JLabel();
         txtTarjeta = new javax.swing.JTextField();
-        btnEstadisticas = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
-
-        setLayout(new java.awt.GridBagLayout());
+        cboCantidadEntradas = new javax.swing.JComboBox<>();
 
         lblZona.setText("Zona:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 61, 0, 0);
-        add(lblZona, gridBagConstraints);
 
         lblCantidadEntradas.setText("Cantidad de Entradas:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 61, 0, 0);
-        add(lblCantidadEntradas, gridBagConstraints);
 
-        cboZonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 6, 0, 0);
-        add(cboZonas, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 0);
-        add(txtCantidad, gridBagConstraints);
+        cboZonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platinum", "VIP", "General", "Tribuna" }));
 
         btnComprar.setText("Comprar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 61, 55, 0);
-        add(btnComprar, gridBagConstraints);
 
         lblNroTarjeta.setText("Nro de Tarjeta:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 61, 0, 0);
-        add(lblNroTarjeta, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 0);
-        add(txtTarjeta, gridBagConstraints);
-
-        btnEstadisticas.setText("Ver Estadísticas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 23, 55, 0);
-        add(btnEstadisticas, gridBagConstraints);
 
         lblTitulo.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
         lblTitulo.setText("Comprar Entradas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 24;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(37, 34, 0, 27);
-        add(lblTitulo, gridBagConstraints);
 
         btnVolver.setText("Volver");
-        add(btnVolver, new java.awt.GridBagConstraints());
+
+        cboCantidadEntradas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblZona)
+                                .addGap(6, 6, 6)
+                                .addComponent(cboZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCantidadEntradas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboCantidadEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVolver)
+                            .addComponent(lblNroTarjeta))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(txtTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnComprar)
+                                .addGap(87, 87, 87))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 50, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(48, 48, 48))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblTitulo)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblZona))
+                    .addComponent(cboZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCantidadEntradas)
+                    .addComponent(cboCantidadEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblNroTarjeta))
+                    .addComponent(txtTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnComprar)
+                    .addComponent(btnVolver))
+                .addGap(57, 57, 57))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     // --- GETTERS PARA EL FUTURO CONTROLADOR CLIENTE ---
     public javax.swing.JComboBox<String> getCboZonas() { return cboZonas; }
-    public javax.swing.JTextField getTxtCantidad() { return txtCantidad; }
+    public javax.swing.JComboBox<String> getCboCantidadEntradas() { return cboCantidadEntradas; }
     public javax.swing.JTextField getTxtTarjeta() { return txtTarjeta; }
     public javax.swing.JButton getBtnComprar() { return btnComprar; }
-    public javax.swing.JButton getBtnEstadisticas() { return btnEstadisticas; }
     public javax.swing.JButton getBtnVolver() { return btnVolver; }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnComprar;
-    public javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cboCantidadEntradas;
     public javax.swing.JComboBox<String> cboZonas;
     private javax.swing.JLabel lblCantidadEntradas;
     private javax.swing.JLabel lblNroTarjeta;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblZona;
-    public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtTarjeta;
     // End of variables declaration//GEN-END:variables
 }

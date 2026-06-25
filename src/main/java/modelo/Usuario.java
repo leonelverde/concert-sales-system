@@ -7,8 +7,8 @@ import java.io.Serializable;
 public class Usuario extends Persona implements Serializable{
     private Boolean estado;
     
-    public Usuario(String nombres, String apellidos, String dni, String usuario, String contraseña, Boolean estado){
-        super(nombres, apellidos, dni, usuario, contraseña);
+    public Usuario(String nombres, String apellidos, String dni, String email, String contraseña, Boolean estado){
+        super(nombres, apellidos, dni, email, contraseña);
         this.estado = estado;
     }
     

@@ -7,11 +7,8 @@ import java.io.File;
 import java.io.Serializable;
 
 public class ArchivoCliente implements Serializable{
-    private static String path;
     
-    public ArchivoCliente(){
-        this.path = "datos_cliente.dat";
-    }
+    private static final String path = "datos_cliente.dat";
     
     private void crearCarpeta(){
         File carpeta = new File("datos");

@@ -8,11 +8,8 @@ import java.io.File;
 import java.io.Serializable;
 
 public class ArchivoConcierto implements Serializable{
-    private String path;
     
-    public ArchivoConcierto(){
-        this.path = "datos_concierto.dat";
-    }
+    private static final String path = "datos_concierto.dat";
     
     private void crearCarpeta(){
         File carpeta = new File("datos");

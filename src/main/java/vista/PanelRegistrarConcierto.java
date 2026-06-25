@@ -15,6 +15,24 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
      */
     public PanelRegistrarConcierto() {
         initComponents();
+        this.removeAll();
+        
+        // Panel Interno
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        
+        // Dimensiones del panel interno
+        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 450));
+        
+        // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
+        panelFormulario.setLayout(null); 
+        
+        lblTitulo.setBounds(100, 20, 300, 40);
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelFormulario.add(lblTitulo);
+        
+        lblNombreConcierto.setBounds(50, 70, 100, 40);
+        panelFormulario.add(lblNombreConcierto);
+        
     }
 
     /**

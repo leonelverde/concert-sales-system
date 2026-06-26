@@ -44,7 +44,7 @@ public class ControladorAgregarTarjeta {
             return;
         }
 
-        // Verificamos mediante una expresión regular básica que sean 16 números exactos
+        // Verificando que sean 16 digitos
         if (!num.matches("\\d{16}")) {
             JOptionPane.showMessageDialog(vistaAgregar, "El número de tarjeta debe contener exactamente 16 dígitos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;

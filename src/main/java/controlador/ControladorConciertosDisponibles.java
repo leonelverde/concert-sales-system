@@ -51,7 +51,7 @@ public class ControladorConciertosDisponibles {
             return;
         }
 
-        // Tomamos el nombre exacto de la banda de la Columna 0
+        // Tomando el nombre exacto de la banda de la Columna 0
         String nombreBanda = tabla.getValueAt(filaSeleccionada, 0).toString();
         Concierto conciertoElegido = null;
 

@@ -4,6 +4,8 @@
  */
 package vista;
 
+import controlador.ControladorConciertosDisponibles;
+
 /**
  *
  * @author leonel
@@ -18,12 +20,12 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         initComponents();
         
-        // 0. Tamaño fijo de la ventana principal
+        // Tamaño fijo ventana
         this.setSize(600, 500);
         
         this.setLocationRelativeTo(null);
         
-        // 1. Creamos las instancias de tus paneles
+        // Instancias de paneles
         PanelLogin panelLogin = new PanelLogin();
         PanelRegistro panelRegistro = new PanelRegistro();
         PanelCliente panelCliente = new PanelCliente();
@@ -32,26 +34,28 @@ public class Vista extends javax.swing.JFrame {
         PanelConciertosDisponibles panelConciertosDisponibles = new PanelConciertosDisponibles();
         PanelRegistrarConcierto panelRegistrarConcierto = new PanelRegistrarConcierto();
         PanelSupervisarVentas panelSupervisarVentas = new PanelSupervisarVentas();
+        PanelHistorialCompras panelHistorialCompras = new PanelHistorialCompras();
         
-        // 2. Los agregamos al jPanel1 dándoles su "Card Name"
+        // Card names
         jPanel1.add(panelLogin, "login");
         jPanel1.add(panelRegistro, "registro");
         jPanel1.add(panelCliente, "cliente");
         jPanel1.add(panelAdmin, "admin");
-        jPanel1.add(panelCompra, "comprar");
+        jPanel1.add(panelCompra, "comprarEntradas");
         jPanel1.add(panelConciertosDisponibles, "conciertosDisponibles");
         jPanel1.add(panelRegistrarConcierto, "registrarConcierto");
         jPanel1.add(panelSupervisarVentas, "supervisarVentas");
+        jPanel1.add(panelHistorialCompras, "historialCompras");
         
-        // --- 3. INICIALIZAR LA ARQUITECTURA MVC ---
+        ControladorConciertosDisponibles controlConciertosDisponibles = new ControladorConciertosDisponibles(
+            panelConciertosDisponibles, 
+            jPanel1
+        );
         
-        // A) Instanciamos la clase que lee y escribe los archivos .dat
-        
-        // Encendemos primero el del cliente
         controlador.ControladorCliente cCliente = new controlador.ControladorCliente(
             panelCliente, 
-            panelCompra, 
-            jPanel1
+            jPanel1,
+            controlConciertosDisponibles
         );
         
         controlador.ControladorAdmin cAdmin = new controlador.ControladorAdmin(
@@ -61,7 +65,7 @@ public class Vista extends javax.swing.JFrame {
         
         // B) Instanciamos el Controlador y le pasamos todas las piezas que necesita gobernar
         // (La vista de login, la vista de registro, el modelo de datos, y el contenedor principal jPanel1)
-        controlador.ControladorLogin controladorAuth = new controlador.ControladorLogin(
+        controlador.ControladorLogin controlLogin = new controlador.ControladorLogin(
             panelLogin, 
             jPanel1,
             cCliente,
@@ -73,6 +77,7 @@ public class Vista extends javax.swing.JFrame {
             jPanel1,
             cCliente
         );
+        
     }
 
     /**

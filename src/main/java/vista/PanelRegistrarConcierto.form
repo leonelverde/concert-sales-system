@@ -75,7 +75,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblTitulo2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Nimbus Mono PS" size="24" style="3"/>
@@ -142,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblCapacidadPlatinum">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Capacidad"/>
+        <Property name="text" type="java.lang.String" value="Capacidad:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -152,7 +152,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblCapacidadVip">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Capacidad"/>
+        <Property name="text" type="java.lang.String" value="Capacidad:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -162,7 +162,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblCapacidadGeneral">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Capacidad"/>
+        <Property name="text" type="java.lang.String" value="Capacidad:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -172,7 +172,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblCapacidadTribuna">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Capacidad"/>
+        <Property name="text" type="java.lang.String" value="Capacidad:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -196,7 +196,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrecioPlatinum">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio"/>
+        <Property name="text" type="java.lang.String" value="Precio:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -206,7 +206,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrecioVip">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio"/>
+        <Property name="text" type="java.lang.String" value="Precio:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -216,7 +216,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrecioGeneral">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio"/>
+        <Property name="text" type="java.lang.String" value="Precio:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -226,7 +226,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrecioTribuna">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio"/>
+        <Property name="text" type="java.lang.String" value="Precio:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

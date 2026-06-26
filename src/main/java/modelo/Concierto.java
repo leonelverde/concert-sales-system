@@ -28,4 +28,12 @@ public class Concierto implements Serializable{
     public double calcularRecaudacionTotal() {
         return 0.0; 
     }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    public Date getFecha(){
+        return this.fecha;
+    }
 }

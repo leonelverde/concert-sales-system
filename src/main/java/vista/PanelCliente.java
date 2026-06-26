@@ -31,7 +31,7 @@ public class PanelCliente extends javax.swing.JPanel {
         // 3. Acomodando los componentes con setBounds(X, Y, Ancho, Alto)
         
         // Título principal
-        lblBienvenidoCliente.setBounds(20, 20, 410, 50);
+        lblBienvenidoCliente.setBounds(125, 20, 200, 50);
         lblBienvenidoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Centra el texto
         panelFormulario.add(lblBienvenidoCliente);
         
@@ -42,10 +42,13 @@ public class PanelCliente extends javax.swing.JPanel {
         buttonComprarEntradas.setBounds(125, 150, 200, 35);
         panelFormulario.add(buttonComprarEntradas);
         
-        buttonHistorialCompras.setBounds(125, 200, 200, 35);
+        buttonTarjetasRegistradas.setBounds(125, 200, 200, 35);
+        panelFormulario.add(buttonTarjetasRegistradas);
+        
+        buttonHistorialCompras.setBounds(125, 250, 200, 35);
         panelFormulario.add(buttonHistorialCompras);
         
-        buttonCerrarSesion.setBounds(125, 250, 200, 35);
+        buttonCerrarSesion.setBounds(125, 300, 200, 35);
         panelFormulario.add(buttonCerrarSesion);
 
         // 4. GridBagLayout al panel principal para centrar la caja interior
@@ -71,6 +74,7 @@ public class PanelCliente extends javax.swing.JPanel {
         buttonComprarEntradas = new javax.swing.JButton();
         buttonHistorialCompras = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
+        buttonTarjetasRegistradas = new javax.swing.JButton();
 
         lblBienvenidoCliente.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
         lblBienvenidoCliente.setText("¡Bienvenido!");
@@ -87,43 +91,51 @@ public class PanelCliente extends javax.swing.JPanel {
         buttonCerrarSesion.setText("Cerrar Sesion");
         buttonCerrarSesion.addActionListener(this::buttonCerrarSesionActionPerformed);
 
+        buttonTarjetasRegistradas.setText("Mis Tarjetas");
+        buttonTarjetasRegistradas.addActionListener(this::buttonTarjetasRegistradasActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonHistorialCompras)
-                    .addComponent(buttonConciertosDisponibles))
-                .addGap(100, 100, 100))
+                .addGap(93, 93, 93)
+                .addComponent(lblBienvenidoCliente)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonComprarEntradas)
-                        .addGap(111, 111, 111))
+                        .addGap(138, 138, 138))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonCerrarSesion)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonHistorialCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonConciertosDisponibles))
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblBienvenidoCliente)
-                        .addGap(58, 58, 58))))
+                        .addComponent(buttonTarjetasRegistradas)
+                        .addGap(161, 161, 161))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonCerrarSesion)
+                        .addGap(147, 147, 147))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lblBienvenidoCliente)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonConciertosDisponibles)
                 .addGap(18, 18, 18)
                 .addComponent(buttonComprarEntradas)
                 .addGap(18, 18, 18)
+                .addComponent(buttonTarjetasRegistradas)
+                .addGap(18, 18, 18)
                 .addComponent(buttonHistorialCompras)
                 .addGap(18, 18, 18)
                 .addComponent(buttonCerrarSesion)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,9 +155,13 @@ public class PanelCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonComprarEntradasActionPerformed
 
-    // --- GETTERS PARA EL FUTURO CONTROLADOR CLIENTE ---
+    private void buttonTarjetasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTarjetasRegistradasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonTarjetasRegistradasActionPerformed
+
     public javax.swing.JButton getButtonConciertosDisponibles() { return buttonConciertosDisponibles; }
     public javax.swing.JButton getButtonComprarEntradas() { return buttonComprarEntradas; }
+    public javax.swing.JButton getButtonTarjetasRegistradas() {return buttonTarjetasRegistradas; }
     public javax.swing.JButton getButtonHistorialCompras() { return buttonHistorialCompras; }
     public javax.swing.JButton getButtonCerrarSesion() { return buttonCerrarSesion; }
     
@@ -154,6 +170,7 @@ public class PanelCliente extends javax.swing.JPanel {
     private javax.swing.JButton buttonComprarEntradas;
     private javax.swing.JButton buttonConciertosDisponibles;
     private javax.swing.JButton buttonHistorialCompras;
+    private javax.swing.JButton buttonTarjetasRegistradas;
     private javax.swing.JLabel lblBienvenidoCliente;
     // End of variables declaration//GEN-END:variables
 }

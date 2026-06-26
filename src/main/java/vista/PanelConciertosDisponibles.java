@@ -4,6 +4,10 @@
  */
 package vista;
 
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+import modelo.Concierto;
+
 /**
  *
  * @author leonel
@@ -20,18 +24,24 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         
         // 2. Creamos la "caja" interna del formulario (Altura aumentada a 400)
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
-        panelFormulario.setPreferredSize(new java.awt.Dimension(450, 400));
+        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 400));
         panelFormulario.setLayout(null); 
         
         // 3. Acomodamos los componentes con setBounds(X, Y, Ancho, Alto)
         
         // Título principal centrado
-        lblConciertosDisponibles.setBounds(25, 20, 300, 50);
+        lblConciertosDisponibles.setBounds(50, 20, 300, 40);
         lblConciertosDisponibles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelFormulario.add(lblConciertosDisponibles);
         
-        jTableConciertosDisponibles.setBounds(30, 100, 390, 380);
+        jTableConciertosDisponibles.setBounds(30, 100, 450, 200);
         panelFormulario.add(jTableConciertosDisponibles);
+        
+        buttonVolver.setBounds(100, 350, 100, 30);
+        panelFormulario.add(buttonVolver);
+        
+        buttonRefrescarTabla.setBounds(300, 350, 100, 50);
+        panelFormulario.add(buttonRefrescarTabla);
         
         this.setLayout(new java.awt.GridBagLayout());
         this.add(panelFormulario);
@@ -40,7 +50,9 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         this.revalidate();
         this.repaint();
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,13 +61,12 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConciertosDisponibles = new javax.swing.JTable();
         lblConciertosDisponibles = new javax.swing.JLabel();
-
-        setLayout(new java.awt.GridBagLayout());
+        buttonVolver = new javax.swing.JButton();
+        buttonRefrescarTabla = new javax.swing.JButton();
 
         jTableConciertosDisponibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,33 +87,86 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTableConciertosDisponibles);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 359;
-        gridBagConstraints.ipady = 255;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(26, 36, 18, 39);
-        add(jScrollPane1, gridBagConstraints);
-
         lblConciertosDisponibles.setFont(new java.awt.Font("Nimbus Mono PS", 3, 24)); // NOI18N
         lblConciertosDisponibles.setText("Conciertos Disponibles");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 66, 0, 0);
-        add(lblConciertosDisponibles, gridBagConstraints);
+
+        buttonVolver.setText("Volver");
+        buttonVolver.addActionListener(this::buttonVolverActionPerformed);
+
+        buttonRefrescarTabla.setText("Actualizar");
+        buttonRefrescarTabla.addActionListener(this::buttonRefrescarTablaActionPerformed);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(lblConciertosDisponibles))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(buttonVolver)
+                        .addGap(89, 89, 89)
+                        .addComponent(buttonRefrescarTabla)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblConciertosDisponibles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonVolver)
+                    .addComponent(buttonRefrescarTabla))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRefrescarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefrescarTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRefrescarTablaActionPerformed
+
+    private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonRefrescarTabla;
+    private javax.swing.JButton buttonVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConciertosDisponibles;
     private javax.swing.JLabel lblConciertosDisponibles;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getButtonRefrescar() { return buttonRefrescarTabla; }
+    public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    
+    public void poblarTabla(Concierto[] listaConciertos) {
+        // 1. Capturamos el modelo de tu JTable (Cambia 'jTable1' por el nombre real de tu variable)
+        DefaultTableModel modelo = (DefaultTableModel) jTableConciertosDisponibles.getModel();
+    
+        // 2. Borramos las filas anteriores para que al entrar dos veces no se duplique la lista
+        modelo.setRowCount(0);
+    
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Concierto c : listaConciertos) {
+            Object[] fila = new Object[]{
+                c.getNombre(),
+                formateador.format(c.getFecha()),       // Convertimos el Date de vuelta a texto bonito
+                c.getZonas().size() + " Zonas activas"  // Columna Zonas
+            };
+            modelo.addRow(fila);
+        }
+    }
 }

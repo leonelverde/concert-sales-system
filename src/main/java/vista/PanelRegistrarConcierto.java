@@ -21,18 +21,108 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
         
         // Dimensiones del panel interno
-        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 450));
+        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 470));
         
         // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
         panelFormulario.setLayout(null); 
         
-        lblTitulo.setBounds(100, 20, 300, 40);
+        lblTitulo.setBounds(100, 20, 300, 30);
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelFormulario.add(lblTitulo);
         
-        lblNombreConcierto.setBounds(50, 70, 100, 40);
+        lblNombreConcierto.setBounds(50, 70, 150, 30);
         panelFormulario.add(lblNombreConcierto);
         
+        txtNombreConcierto.setBounds(230, 70, 200, 30);
+        panelFormulario.add(txtNombreConcierto);
+        
+        lblFecha.setBounds(50, 120, 150, 30);
+        panelFormulario.add(lblFecha);
+        
+        txtFechaConcierto.setBounds(230, 120, 200, 30);
+        panelFormulario.add(txtFechaConcierto);
+        
+        lblTitulo2.setBounds(80, 170, 350, 30);
+        lblTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelFormulario.add(lblTitulo2);
+        
+        // Zona Platinum
+        lblPlatinum.setBounds(50, 220, 80, 30);
+        panelFormulario.add(lblPlatinum);
+        
+        lblCapacidadPlatinum.setBounds(140, 220, 80, 30);
+        panelFormulario.add(lblCapacidadPlatinum);
+        
+        txtCapacidadPlatinum.setBounds(230, 220, 80, 30);
+        panelFormulario.add(txtCapacidadPlatinum);
+        
+        lblPrecioPlatinum.setBounds(320, 220, 50, 30);
+        panelFormulario.add(lblPrecioPlatinum);
+        
+        txtPrecioPlatinum.setBounds(380, 220, 80, 30);
+        panelFormulario.add(txtPrecioPlatinum);
+        
+        // Zona VIP
+        lblVip.setBounds(50, 270, 80, 30);
+        panelFormulario.add(lblVip);
+        
+        lblCapacidadVip.setBounds(140, 270, 80, 30);
+        panelFormulario.add(lblCapacidadVip);
+        
+        txtCapacidadVip.setBounds(230, 270, 80, 30);
+        panelFormulario.add(txtCapacidadVip);
+        
+        lblPrecioVip.setBounds(320, 270, 50, 30);
+        panelFormulario.add(lblPrecioVip);
+        
+        txtPrecioVip.setBounds(380, 270, 80, 30);
+        panelFormulario.add(txtPrecioVip);
+        
+        //Zona General
+        lblGeneral.setBounds(50, 320, 80, 30);
+        panelFormulario.add(lblGeneral);
+        
+        lblCapacidadGeneral.setBounds(140, 320, 80, 30);
+        panelFormulario.add(lblCapacidadGeneral);
+        
+        txtCapacidadGeneral.setBounds(230, 320, 80, 30);
+        panelFormulario.add(txtCapacidadGeneral);
+        
+        lblPrecioGeneral.setBounds(320, 320, 50, 30);
+        panelFormulario.add(lblPrecioGeneral);
+        
+        txtPrecioGeneral.setBounds(380, 320, 80, 30);
+        panelFormulario.add(txtPrecioGeneral);
+        
+        // Zona Tribuna
+        lblTribuna.setBounds(50, 370, 80, 30);
+        panelFormulario.add(lblTribuna);
+        
+        lblCapacidadTribuna.setBounds(140, 370, 80, 30);
+        panelFormulario.add(lblCapacidadTribuna);
+        
+        txtCapacidadTribuna.setBounds(230, 370, 80, 30);
+        panelFormulario.add(txtCapacidadTribuna);
+        
+        lblPrecioTribuna.setBounds(320, 370, 50, 30);
+        panelFormulario.add(lblPrecioTribuna);
+        
+        txtPrecioTribuna.setBounds(380, 370, 80, 30);
+        panelFormulario.add(txtPrecioTribuna);
+    
+        buttonVolver.setBounds(140, 420, 100, 30);
+        panelFormulario.add(buttonVolver);
+    
+        buttonRegistrarConcierto.setBounds(320, 420, 100, 30);
+        panelFormulario.add(buttonRegistrarConcierto);
+        
+        this.setLayout(new java.awt.GridBagLayout());
+        
+        // Insertando todo ordenado al panel interno
+        this.add(panelFormulario);
+        
+        this.revalidate();
+        this.repaint();
     }
 
     /**
@@ -50,7 +140,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         lblFecha = new javax.swing.JLabel();
         buttonRegistrarConcierto = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo2 = new javax.swing.JLabel();
         lblPlatinum = new javax.swing.JLabel();
         lblVip = new javax.swing.JLabel();
         lblGeneral = new javax.swing.JLabel();
@@ -124,15 +214,15 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(28, 16, 35, 0);
         add(buttonVolver, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Nimbus Mono PS", 3, 24)); // NOI18N
-        jLabel1.setText("Configuracion de Zonas");
+        lblTitulo2.setFont(new java.awt.Font("Nimbus Mono PS", 3, 24)); // NOI18N
+        lblTitulo2.setText("Configuracion de Zonas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 21;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 99, 0, 0);
-        add(jLabel1, gridBagConstraints);
+        add(lblTitulo2, gridBagConstraints);
 
         lblPlatinum.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         lblPlatinum.setText("Platinum");
@@ -175,7 +265,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 69, 0, 0);
         add(lblTribuna, gridBagConstraints);
 
-        lblCapacidadPlatinum.setText("Capacidad");
+        lblCapacidadPlatinum.setText("Capacidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -184,7 +274,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblCapacidadPlatinum, gridBagConstraints);
 
-        lblCapacidadVip.setText("Capacidad");
+        lblCapacidadVip.setText("Capacidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
@@ -193,7 +283,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblCapacidadVip, gridBagConstraints);
 
-        lblCapacidadGeneral.setText("Capacidad");
+        lblCapacidadGeneral.setText("Capacidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
@@ -202,7 +292,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblCapacidadGeneral, gridBagConstraints);
 
-        lblCapacidadTribuna.setText("Capacidad");
+        lblCapacidadTribuna.setText("Capacidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
@@ -229,7 +319,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 37);
         add(txtFechaConcierto, gridBagConstraints);
 
-        lblPrecioPlatinum.setText("Precio");
+        lblPrecioPlatinum.setText("Precio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 6;
@@ -237,7 +327,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblPrecioPlatinum, gridBagConstraints);
 
-        lblPrecioVip.setText("Precio");
+        lblPrecioVip.setText("Precio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 8;
@@ -245,7 +335,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblPrecioVip, gridBagConstraints);
 
-        lblPrecioGeneral.setText("Precio");
+        lblPrecioGeneral.setText("Precio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 10;
@@ -253,7 +343,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
         add(lblPrecioGeneral, gridBagConstraints);
 
-        lblPrecioTribuna.setText("Precio");
+        lblPrecioTribuna.setText("Precio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 12;
@@ -334,7 +424,6 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonRegistrarConcierto;
     private javax.swing.JButton buttonVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCapacidadGeneral;
     private javax.swing.JLabel lblCapacidadPlatinum;
     private javax.swing.JLabel lblCapacidadTribuna;
@@ -348,6 +437,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
     private javax.swing.JLabel lblPrecioTribuna;
     private javax.swing.JLabel lblPrecioVip;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo2;
     private javax.swing.JLabel lblTribuna;
     private javax.swing.JLabel lblVip;
     private javax.swing.JTextField txtCapacidadGeneral;

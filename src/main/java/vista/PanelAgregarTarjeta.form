@@ -19,10 +19,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNumeroTarjeta" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombreTitular" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFechaVencimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCvv" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonVolver" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -57,22 +57,22 @@
               <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNumeroTarjeta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNumeroTarjeta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombreTitular" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNombreTitular" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFechaVencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFechaVencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCvv" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCvv" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -94,22 +94,22 @@
         <Property name="text" type="java.lang.String" value="Agregar Tarjeta"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblNumeroTarjeta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Numero de Tarjeta:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblNombreTitular">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre del Titular:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblFechaVencimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fecha de Vencimiento:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblCvv">
       <Properties>
         <Property name="text" type="java.lang.String" value="CVV:"/>
       </Properties>

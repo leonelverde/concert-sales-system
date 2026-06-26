@@ -29,7 +29,7 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableTarjetasRegistradas = new javax.swing.JTable();
         buttonVolver = new javax.swing.JButton();
         buttonEliminarTarjeta = new javax.swing.JButton();
         buttonAgregarTarjeta = new javax.swing.JButton();
@@ -43,10 +43,10 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 22, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 12, 0, 0);
         add(jLabel1, gridBagConstraints);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTarjetasRegistradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,20 +56,28 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
             new String [] {
                 "Numero", "Nombre", "Fecha Venc.", "CVV"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableTarjetasRegistradas);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 418;
-        gridBagConstraints.ipady = 220;
+        gridBagConstraints.ipadx = 405;
+        gridBagConstraints.ipady = 161;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(18, 33, 0, 33);
+        gridBagConstraints.insets = new java.awt.Insets(18, 33, 0, 42);
         add(jScrollPane1, gridBagConstraints);
 
         buttonVolver.setText("Volver");
@@ -78,7 +86,7 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(33, 33, 36, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 43, 47, 0);
         add(buttonVolver, gridBagConstraints);
 
         buttonEliminarTarjeta.setText("EliminarTarjeta");
@@ -87,7 +95,7 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(33, 55, 36, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 42, 47, 0);
         add(buttonEliminarTarjeta, gridBagConstraints);
 
         buttonAgregarTarjeta.setText("Agregar Tarjeta");
@@ -96,7 +104,7 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(33, 49, 36, 33);
+        gridBagConstraints.insets = new java.awt.Insets(30, 28, 47, 0);
         add(buttonAgregarTarjeta, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,10 +123,38 @@ public class PanelTarjetasRegistradas extends javax.swing.JPanel {
     private javax.swing.JButton buttonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableTarjetasRegistradas;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JButton getButtonAgregarTarjeta() { return buttonAgregarTarjeta; }
     public javax.swing.JButton getButtonEliminarTarjeta() { return buttonEliminarTarjeta; }
     public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    
+    public javax.swing.JTable getTablaTarjetas() {return jTableTarjetasRegistradas; }
+
+    public void poblarTabla(modelo.Tarjeta[] listaTarjetas) {
+        // 1. Capturamos el modelo de tu JTable (Reemplaza 'jTableTarjetas' por el nombre real de tu variable)
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTableTarjetasRegistradas.getModel();
+        
+        // 2. Limpiamos las filas viejas para evitar que se dupliquen al entrar y salir del panel
+        modelo.setRowCount(0);
+
+        // 3. Recorremos el arreglo clásico [] y pintamos fila por fila
+        for (int i = 0; i < listaTarjetas.length; i++) {
+            modelo.Tarjeta t = listaTarjetas[i];
+            
+            // Enmascaramos el número por seguridad visual (Ej: "************3456")
+            String numCompleto = t.getNumero();
+            String numOculto = "************" + numCompleto.substring(numCompleto.length() - 4);
+
+            Object[] fila = new Object[]{
+                numOculto,       // Columna 0: Número oculto
+                t.getNombre(),   // Columna 1: Titular
+                t.getFecha(),    // Columna 2: Vencimiento
+                "***"            // Columna 3: El CVV jamás se muestra por seguridad
+            };
+            
+            modelo.addRow(fila);
+        }
+    }
 }

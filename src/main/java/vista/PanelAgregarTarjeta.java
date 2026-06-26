@@ -27,10 +27,10 @@ public class PanelAgregarTarjeta extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblNumeroTarjeta = new javax.swing.JLabel();
+        lblNombreTitular = new javax.swing.JLabel();
+        lblFechaVencimiento = new javax.swing.JLabel();
+        lblCvv = new javax.swing.JLabel();
         txtNumeroTarjeta = new javax.swing.JTextField();
         txtNombreTitular = new javax.swing.JTextField();
         txtFechaVencimiento = new javax.swing.JTextField();
@@ -41,13 +41,13 @@ public class PanelAgregarTarjeta extends javax.swing.JPanel {
         lblTitulo.setFont(new java.awt.Font("Liberation Sans", 3, 24)); // NOI18N
         lblTitulo.setText("Agregar Tarjeta");
 
-        jLabel1.setText("Numero de Tarjeta:");
+        lblNumeroTarjeta.setText("Numero de Tarjeta:");
 
-        jLabel2.setText("Nombre del Titular:");
+        lblNombreTitular.setText("Nombre del Titular:");
 
-        jLabel3.setText("Fecha de Vencimiento:");
+        lblFechaVencimiento.setText("Fecha de Vencimiento:");
 
-        jLabel4.setText("CVV:");
+        lblCvv.setText("CVV:");
 
         buttonVolver.setText("Volver");
 
@@ -60,10 +60,10 @@ public class PanelAgregarTarjeta extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
+                    .addComponent(lblNumeroTarjeta)
+                    .addComponent(lblNombreTitular)
+                    .addComponent(lblFechaVencimiento)
+                    .addComponent(lblCvv)
                     .addComponent(buttonVolver, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -90,19 +90,19 @@ public class PanelAgregarTarjeta extends javax.swing.JPanel {
                 .addComponent(lblTitulo)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblNumeroTarjeta)
                     .addComponent(txtNumeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblNombreTitular)
                     .addComponent(txtNombreTitular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblFechaVencimiento)
                     .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblCvv)
                     .addComponent(txtCvv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -116,14 +116,22 @@ public class PanelAgregarTarjeta extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonGuardarTarjeta;
     private javax.swing.JButton buttonVolver;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblCvv;
+    private javax.swing.JLabel lblFechaVencimiento;
+    private javax.swing.JLabel lblNombreTitular;
+    private javax.swing.JLabel lblNumeroTarjeta;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCvv;
     private javax.swing.JTextField txtFechaVencimiento;
     private javax.swing.JTextField txtNombreTitular;
     private javax.swing.JTextField txtNumeroTarjeta;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getTxtNumeroTarjeta() { return txtNumeroTarjeta; }
+    public javax.swing.JTextField getTxtNombreTitular() { return txtNombreTitular; }
+    public javax.swing.JTextField getTxtFechaVencimiento() { return txtFechaVencimiento; }
+    public javax.swing.JTextField getTxtCvv() { return txtCvv; }
+    
+    public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    public javax.swing.JButton getButtonGuardarTarjeta() { return buttonGuardarTarjeta; }
 }

@@ -4,8 +4,6 @@
  */
 package vista;
 
-import controlador.ControladorConciertosDisponibles;
-
 /**
  *
  * @author leonel
@@ -30,32 +28,61 @@ public class Vista extends javax.swing.JFrame {
         PanelRegistro panelRegistro = new PanelRegistro();
         PanelCliente panelCliente = new PanelCliente();
         PanelAdmin panelAdmin = new PanelAdmin();
-        PanelComprarEntradas panelCompra = new PanelComprarEntradas();
+        PanelComprarEntradas panelComprarEntradas = new PanelComprarEntradas();
         PanelConciertosDisponibles panelConciertosDisponibles = new PanelConciertosDisponibles();
         PanelRegistrarConcierto panelRegistrarConcierto = new PanelRegistrarConcierto();
         PanelSupervisarVentas panelSupervisarVentas = new PanelSupervisarVentas();
         PanelHistorialCompras panelHistorialCompras = new PanelHistorialCompras();
+        PanelTarjetasRegistradas panelTarjetasRegistradas = new PanelTarjetasRegistradas();
+        PanelAgregarTarjeta panelAgregarTarjeta = new PanelAgregarTarjeta();
+        
         
         // Card names
         jPanel1.add(panelLogin, "login");
         jPanel1.add(panelRegistro, "registro");
         jPanel1.add(panelCliente, "cliente");
         jPanel1.add(panelAdmin, "admin");
-        jPanel1.add(panelCompra, "comprarEntradas");
+        jPanel1.add(panelComprarEntradas, "comprarEntradas");
         jPanel1.add(panelConciertosDisponibles, "conciertosDisponibles");
         jPanel1.add(panelRegistrarConcierto, "registrarConcierto");
         jPanel1.add(panelSupervisarVentas, "supervisarVentas");
         jPanel1.add(panelHistorialCompras, "historialCompras");
+        jPanel1.add(panelTarjetasRegistradas, "tarjetasRegistradas");
+        jPanel1.add(panelAgregarTarjeta, "agregarTarjeta");
         
-        ControladorConciertosDisponibles controlConciertosDisponibles = new ControladorConciertosDisponibles(
-            panelConciertosDisponibles, 
+        controlador.ControladorRegistrarConcierto controlRegistrarConcierto = new controlador.ControladorRegistrarConcierto(
+            panelRegistrarConcierto, 
             jPanel1
+        );
+        
+        controlador.ControladorTarjetasRegistradas controlTarjetasRegistradas = new controlador.ControladorTarjetasRegistradas(
+            panelTarjetasRegistradas,
+            jPanel1
+        );
+        
+        controlador.ControladorAgregarTarjeta controlAgregarTarjeta = new controlador.ControladorAgregarTarjeta(
+            panelAgregarTarjeta,    
+            jPanel1,
+            controlTarjetasRegistradas    
+        );
+        
+        controlador.ControladorComprarEntradas controlComprarEntradas = new controlador.ControladorComprarEntradas(
+            panelComprarEntradas,
+            jPanel1
+        );
+        
+        controlador.ControladorConciertosDisponibles controlConciertosDisponibles = new controlador.ControladorConciertosDisponibles(
+            panelConciertosDisponibles, 
+            jPanel1,
+            controlComprarEntradas
         );
         
         controlador.ControladorCliente cCliente = new controlador.ControladorCliente(
             panelCliente, 
             jPanel1,
-            controlConciertosDisponibles
+            controlConciertosDisponibles,
+            controlTarjetasRegistradas,
+            controlAgregarTarjeta
         );
         
         controlador.ControladorAdmin cAdmin = new controlador.ControladorAdmin(
@@ -63,8 +90,6 @@ public class Vista extends javax.swing.JFrame {
             jPanel1
         );
         
-        // B) Instanciamos el Controlador y le pasamos todas las piezas que necesita gobernar
-        // (La vista de login, la vista de registro, el modelo de datos, y el contenedor principal jPanel1)
         controlador.ControladorLogin controlLogin = new controlador.ControladorLogin(
             panelLogin, 
             jPanel1,
@@ -99,11 +124,15 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

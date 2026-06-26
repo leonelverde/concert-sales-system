@@ -51,7 +51,7 @@ public class Cliente extends Persona implements Serializable{
             throw new IllegalStateException("Operación denegada: Debe seleccionar una zona y una tarjeta válidas antes de comprar.");
         }
         
-        Venta nuevaVenta = new Venta(zonaSeleccionada, tarjetaSeleccionada);
+        Venta nuevaVenta = new Venta(this, zonaSeleccionada, tarjetaSeleccionada);
         List<Entrada> entradasDespachadas = zonaSeleccionada.venderEntradas(cantidad);
         nuevaVenta.agregarEntradas(entradasDespachadas);
 

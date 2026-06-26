@@ -64,6 +64,7 @@ public class ControladorLogin {
                 controladorAdmin.setAdminSesion((Usuario) personaLogeada);
                 cl.show(contenedorPrincipal, "admin");
             } else if (personaLogeada instanceof Cliente) {                
+                
                 controladorCliente.setClienteSesion((Cliente) personaLogeada);
                 cl.show(contenedorPrincipal, "cliente");
             }

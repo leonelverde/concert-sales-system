@@ -21,7 +21,7 @@ public class PanelRegistrarConcierto extends javax.swing.JPanel {
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
         
         // Dimensiones del panel interno
-        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 470));
+        panelFormulario.setPreferredSize(new java.awt.Dimension(500, 500));
         
         // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
         panelFormulario.setLayout(null); 

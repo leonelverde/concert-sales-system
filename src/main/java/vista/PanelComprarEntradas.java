@@ -187,4 +187,16 @@ public class PanelComprarEntradas extends javax.swing.JPanel {
     private javax.swing.JLabel lblZona;
     public javax.swing.JTextField txtTarjeta;
     // End of variables declaration//GEN-END:variables
+
+    public void prepararParaCompra(modelo.Concierto conciertoSeleccionado) {
+        // 1. Cambiamos el título para que el cliente sepa qué está comprando
+        lblTitulo.setText("Compra: " + conciertoSeleccionado.getNombre());
+
+        // 2. Limpiamos las zonas estáticas y cargamos únicamente las zonas reales de este concierto
+        cboZonas.removeAllItems();
+        
+        for (modelo.Zona z : conciertoSeleccionado.getZonas()) {
+            cboZonas.addItem(z.getNombre());
+        }
+    }
 }

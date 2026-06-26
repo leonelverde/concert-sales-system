@@ -70,4 +70,5 @@ public class Zona implements Serializable{
     
     public int getPrecio() { return precio; }
     public String getNombre() { return nombre; }
+    public List<Entrada> getEntradas() {return entradas;}
 }

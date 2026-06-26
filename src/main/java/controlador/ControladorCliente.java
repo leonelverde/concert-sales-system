@@ -14,29 +14,40 @@ public class ControladorCliente {
     
     // Inyectamos el controlador de la tabla para poder darle la orden de actualizarse
     private ControladorConciertosDisponibles controladorConciertos;
-
-    public ControladorCliente(PanelCliente vistaCliente, Container contenedorPrincipal, ControladorConciertosDisponibles controladorConciertos) {
+    
+    private ControladorTarjetasRegistradas ctrlTarjetas;
+    private ControladorAgregarTarjeta ctrlAgregarTarjeta;
+    
+    public ControladorCliente(PanelCliente vistaCliente, Container contenedorPrincipal, ControladorConciertosDisponibles controladorConciertos, ControladorTarjetasRegistradas ctrlTarjetas, ControladorAgregarTarjeta ctrlAgregar) {
         this.vistaCliente = vistaCliente;
         this.contenedorPrincipal = contenedorPrincipal;
         this.controladorConciertos = controladorConciertos;
+        this.ctrlTarjetas = ctrlTarjetas;
+        this.ctrlAgregarTarjeta = ctrlAgregar;
         
         this.iniciar();
     }
 
     private void iniciar() {
         this.vistaCliente.getButtonConciertosDisponibles().addActionListener(e -> irAConciertosDisponibles());
-        this.vistaCliente.getButtonComprarEntradas().addActionListener(e -> irAComprarEntradas());
+        //this.vistaCliente.getButtonComprarEntradas().addActionListener(e -> irAComprarEntradas());
+        this.vistaCliente.getButtonTarjetasRegistradas().addActionListener(e -> irAMisTarjetas());
         this.vistaCliente.getButtonHistorialCompras().addActionListener(e -> irAHistorialCompras());
         this.vistaCliente.getButtonCerrarSesion().addActionListener(e -> cerrarSesion());
     }
 
     public void setClienteSesion(Cliente cliente) {
         this.clienteLogeado = cliente;
+        
+        ctrlTarjetas.setClienteSesion(cliente);
+        ctrlAgregarTarjeta.setClienteActual(cliente);
     }
 
     private void irAConciertosDisponibles() {
         //Refrescar la lectura del archivo .dat 
         if (this.controladorConciertos != null) {
+            
+            this.controladorConciertos.setClienteSesion(this.clienteLogeado);
             this.controladorConciertos.refrescarCatalogo();
         }
         
@@ -49,7 +60,12 @@ public class ControladorCliente {
         CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
         cl.show(contenedorPrincipal, "comprarEntradas");
     }
-
+    
+    private void irAMisTarjetas(){
+        CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
+        cl.show(contenedorPrincipal, "tarjetasRegistradas");
+        
+    }
     private void irAHistorialCompras() {
         // Aquí eventualmente le pasarás this.clienteLogeado al controlador de historial 
         // para que filtre en Venta.dat solo las compras hechas por este DNI/Email.

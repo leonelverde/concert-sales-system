@@ -10,12 +10,14 @@ import java.io.Serializable;
 public class Venta implements Serializable {
     private Date fecha;
     private int monto;
+    private Cliente cliente;
     private Zona zona;
     private Tarjeta tarjeta;
     private List<Entrada> entradas;
     
-    public Venta(Zona zona, Tarjeta tarjeta){
+    public Venta(Cliente cliente, Zona zona, Tarjeta tarjeta){
         this.fecha = new Date();
+        this.cliente = cliente;
         this.zona = zona;
         this.tarjeta = tarjeta;
         this.entradas = new ArrayList<>();
@@ -33,4 +35,5 @@ public class Venta implements Serializable {
     public boolean anular(){return true;}
     public Date getFecha() { return fecha; }
     public int getMonto() { return monto; }
+    public Cliente getCliente() { return cliente; }
 }

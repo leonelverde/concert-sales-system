@@ -30,17 +30,21 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         // 3. Acomodamos los componentes con setBounds(X, Y, Ancho, Alto)
         
         // Título principal centrado
-        lblConciertosDisponibles.setBounds(50, 20, 300, 40);
+        lblConciertosDisponibles.setBounds(50, 20, 400, 40);
         lblConciertosDisponibles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelFormulario.add(lblConciertosDisponibles);
         
-        jTableConciertosDisponibles.setBounds(30, 100, 450, 200);
-        panelFormulario.add(jTableConciertosDisponibles);
+        javax.swing.JScrollPane scrollTabla = new javax.swing.JScrollPane(jTableConciertosDisponibles);
+        scrollTabla.setBounds(30, 100, 450, 200);
+        panelFormulario.add(scrollTabla);
         
-        buttonVolver.setBounds(100, 350, 100, 30);
+        buttonVolver.setBounds(75, 350, 100, 30);
         panelFormulario.add(buttonVolver);
         
-        buttonRefrescarTabla.setBounds(300, 350, 100, 50);
+        buttonComprarEntrada.setBounds(200, 350, 100, 30);
+        panelFormulario.add(buttonComprarEntrada);
+        
+        buttonRefrescarTabla.setBounds(325, 350, 100, 30);
         panelFormulario.add(buttonRefrescarTabla);
         
         this.setLayout(new java.awt.GridBagLayout());
@@ -67,6 +71,7 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         lblConciertosDisponibles = new javax.swing.JLabel();
         buttonVolver = new javax.swing.JButton();
         buttonRefrescarTabla = new javax.swing.JButton();
+        buttonComprarEntrada = new javax.swing.JButton();
 
         jTableConciertosDisponibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,7 +89,15 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
             new String [] {
                 "Nombre", "Fecha", "Zonas"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableConciertosDisponibles);
 
         lblConciertosDisponibles.setFont(new java.awt.Font("Nimbus Mono PS", 3, 24)); // NOI18N
@@ -96,25 +109,30 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         buttonRefrescarTabla.setText("Actualizar");
         buttonRefrescarTabla.addActionListener(this::buttonRefrescarTablaActionPerformed);
 
+        buttonComprarEntrada.setText("Comprar Entradas");
+        buttonComprarEntrada.addActionListener(this::buttonComprarEntradaActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(lblConciertosDisponibles)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(lblConciertosDisponibles))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonVolver)
-                        .addGap(89, 89, 89)
-                        .addComponent(buttonRefrescarTabla)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addComponent(buttonComprarEntrada)
+                        .addGap(26, 26, 26)
+                        .addComponent(buttonRefrescarTabla)
+                        .addGap(59, 59, 59))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +144,8 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonVolver)
-                    .addComponent(buttonRefrescarTabla))
+                    .addComponent(buttonRefrescarTabla)
+                    .addComponent(buttonComprarEntrada))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -139,8 +158,13 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonVolverActionPerformed
 
+    private void buttonComprarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonComprarEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonComprarEntradaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonComprarEntrada;
     private javax.swing.JButton buttonRefrescarTabla;
     private javax.swing.JButton buttonVolver;
     private javax.swing.JScrollPane jScrollPane1;
@@ -150,6 +174,8 @@ public class PanelConciertosDisponibles extends javax.swing.JPanel {
 
     public javax.swing.JButton getButtonRefrescar() { return buttonRefrescarTabla; }
     public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    public javax.swing.JButton getButtonComprarEntrada() {return buttonComprarEntrada; }
+    public javax.swing.JTable getTablaConciertos() {return jTableConciertosDisponibles; }
     
     public void poblarTabla(Concierto[] listaConciertos) {
         // 1. Capturamos el modelo de tu JTable (Cambia 'jTable1' por el nombre real de tu variable)

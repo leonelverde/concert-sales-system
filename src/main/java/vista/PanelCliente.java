@@ -31,7 +31,7 @@ public class PanelCliente extends javax.swing.JPanel {
         // 3. Acomodando los componentes con setBounds(X, Y, Ancho, Alto)
         
         // Título principal
-        lblBienvenidoCliente.setBounds(125, 20, 200, 50);
+        lblBienvenidoCliente.setBounds(100, 20, 300, 50);
         lblBienvenidoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Centra el texto
         panelFormulario.add(lblBienvenidoCliente);
         

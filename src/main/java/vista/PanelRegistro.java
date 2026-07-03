@@ -15,60 +15,59 @@ public class PanelRegistro extends javax.swing.JPanel {
      */
     public PanelRegistro() {
         initComponents();
+        this.removeAll();
         
         // Panel Interno
         javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
         
-        // Dimensiones del panel interno
-        panelFormulario.setPreferredSize(new java.awt.Dimension(400, 380));
-        
-        // Layout nulo para usar coordenadas manuales (x, y, ancho, alto)
+        // Agrandamos la altura de la caja interior a 430 para que entre el nuevo campo
+        panelFormulario.setPreferredSize(new java.awt.Dimension(400, 430));
         panelFormulario.setLayout(null); 
         
-        // setBounds(X, Y, Ancho, Alto). 
         lblRegistrarse.setBounds(70, 20, 280, 40);
         panelFormulario.add(lblRegistrarse);
         
         LblNombres.setBounds(50, 80, 100, 30);
         panelFormulario.add(LblNombres);
-
         txtNombres.setBounds(150, 80, 180, 30);
         panelFormulario.add(txtNombres);
         
         LblApellidos.setBounds(50, 130, 100, 30);
         panelFormulario.add(LblApellidos);
-        
         txtApellidos.setBounds(150, 130, 180, 30);
         panelFormulario.add(txtApellidos);
         
         LblDni.setBounds(50, 180, 100, 30);
         panelFormulario.add(LblDni);
-        
         txtDni.setBounds(150, 180, 180, 30);
         panelFormulario.add(txtDni);
         
         lblEmail.setBounds(50, 230, 100, 30);
         panelFormulario.add(lblEmail);
-        
         txtEmail.setBounds(150, 230, 180, 30);
         panelFormulario.add(txtEmail);
         
         LblPassword.setBounds(50, 280, 100, 30);
         panelFormulario.add(LblPassword);
-        
         txtPassword.setBounds(150, 280, 180, 30);
         panelFormulario.add(txtPassword);
         
-        buttonVolver.setBounds(50, 330, 130, 30);
+        // --- NUEVO CAMPO: EDAD (Posicionado en Y = 330) ---
+        javax.swing.JLabel lblEdadForm = new javax.swing.JLabel("Edad");
+        lblEdadForm.setBounds(50, 330, 100, 30);
+        panelFormulario.add(lblEdadForm);
+        
+        txtEdad.setBounds(150, 330, 180, 30);
+        panelFormulario.add(txtEdad);
+        
+        // --- BOTONES (Desplazados hacia abajo a Y = 380) ---
+        buttonVolver.setBounds(50, 380, 130, 30);
         panelFormulario.add(buttonVolver);
         
-        buttonCreateAccount.setBounds(200, 330, 130, 30);
+        buttonCreateAccount.setBounds(200, 380, 130, 30);
         panelFormulario.add(buttonCreateAccount);
         
-        // GridBagLayout a PanelLogin principal
         this.setLayout(new java.awt.GridBagLayout());
-        
-        // Insertando todo ordenado al panel interno
         this.add(panelFormulario);
         
         this.revalidate();
@@ -249,6 +248,8 @@ public class PanelRegistro extends javax.swing.JPanel {
     public javax.swing.JPasswordField getTxtPassword() { return txtPassword; }
     public javax.swing.JButton getButtonCreateAccount() { return buttonCreateAccount; }
     public javax.swing.JButton getButtonVolver() { return buttonVolver; }
+    private javax.swing.JTextField txtEdad = new javax.swing.JTextField();
+    public javax.swing.JTextField getTxtEdad() { return txtEdad; }
     
     // Método temporal por si aún no agregas el campo del código secreto para el Admin
     public String getCodigoAdmin() { return ""; }

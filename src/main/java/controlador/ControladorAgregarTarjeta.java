@@ -1,8 +1,8 @@
-
 package controlador;
 
 import vista.PanelAgregarTarjeta;
-import coleccion.ColeccionTarjeta;
+import modelo.Sistema; // Memoria RAM
+import modelo.GestorPersistencia; // Guardado rápido
 import modelo.Tarjeta;
 import java.awt.CardLayout;
 import java.awt.Container;
@@ -44,23 +44,39 @@ public class ControladorAgregarTarjeta {
             return;
         }
 
-        // Verificando que sean 16 digitos
-        if (!num.matches("\\d{16}")) {
-            JOptionPane.showMessageDialog(vistaAgregar, "El número de tarjeta debe contener exactamente 16 dígitos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        try {
+            // --- VALIDACIÓN DE DÍGITOS (Exigencia del Profesor) ---
+            // Permite entre 14 y 16 dígitos para soportar Diners (14) y Amex (15)
+            if (!num.matches("\\d{14,16}")) {
+                throw new modelo.excepciones.TarjetaInvalidaException("El número de tarjeta debe contener entre 14 y 16 dígitos.");
+            }
 
-        Tarjeta nueva = new Tarjeta(clienteActual.getDni(), num, nom, fecha, cvv);
-        
-        boolean guardado = ColeccionTarjeta.agregarTarjeta(nueva);
+            // Validaciones Estrictas de Formato
+            if (!fecha.matches("(0[1-9]|1[0-2])/\\d{2}")) {
+                throw new IllegalArgumentException("La fecha debe tener el formato MM/YY (ej: 12/28).");
+            }
+            if (!cvv.matches("\\d{3,4}")) {
+                throw new IllegalArgumentException("El CVV debe tener 3 o 4 dígitos.");
+            }
+            
+            modelo.EmisorTarjeta emisor = modelo.EmisorTarjeta.detectar(num);
+            if (emisor == modelo.EmisorTarjeta.DESCONOCIDO) {
+                throw new modelo.excepciones.TarjetaInvalidaException("Número inválido. Solo aceptamos Visa, Mastercard, Diners o Amex reales.");
+            }
 
-        if (guardado) {
-            JOptionPane.showMessageDialog(vistaAgregar, "Tarjeta guardada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            Tarjeta nueva = new Tarjeta(clienteActual.getDni(), num, nom, fecha, cvv);
+            Sistema.tarjetas.add(nueva);
+            GestorPersistencia.guardarDatos();
+
+            JOptionPane.showMessageDialog(vistaAgregar, "Tarjeta " + emisor.getEtiqueta() + " guardada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiar();
-            this.controladorTarjetas.refrescarCatalogo(); // Forzamos actualización de la tabla padre
+            this.controladorTarjetas.refrescarCatalogo(); 
             volver();
-        } else {
-            JOptionPane.showMessageDialog(vistaAgregar, "Error al intentar registrar la tarjeta en el disco.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(vistaAgregar, ex.getMessage(), "Error de Formato", JOptionPane.ERROR_MESSAGE);
+        } catch (modelo.excepciones.TarjetaInvalidaException ex) {
+            JOptionPane.showMessageDialog(vistaAgregar, ex.getMessage(), "Tarjeta Rechazada", JOptionPane.ERROR_MESSAGE);
         }
     }
 

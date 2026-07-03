@@ -1,22 +1,73 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista;
 
-/**
- *
- * @author leonel
- */
+import javax.swing.table.DefaultTableModel;
+import modelo.Venta;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 public class PanelHistorialCompras extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelHistorialCompras
-     */
+    // --- NUESTRAS VARIABLES (Las ponemos arriba para que NetBeans no moleste) ---
+    private javax.swing.JTable tablaHistorial = new javax.swing.JTable();
+    private javax.swing.JButton btnVolver = new javax.swing.JButton("Volver");
+    private javax.swing.JLabel lblTitulo = new javax.swing.JLabel("Mi Historial de Compras");
+
     public PanelHistorialCompras() {
-        initComponents();
+        initComponents(); // NetBeans necesita esto, lo dejamos tranquilo
+        
+        // --- NUESTRA CIRUGÍA VISUAL EMPIEZA AQUÍ ---
+        this.removeAll(); // Borramos el panel vacío que generó NetBeans
+        
+        javax.swing.JPanel panelFormulario = new javax.swing.JPanel();
+        panelFormulario.setPreferredSize(new java.awt.Dimension(560, 440));
+        panelFormulario.setLayout(null);
+
+        lblTitulo.setFont(new java.awt.Font("Nimbus Mono PS", 1, 24));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setBounds(20, 10, 520, 35);
+        panelFormulario.add(lblTitulo);
+
+        tablaHistorial.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"Fecha", "Concierto", "Zona", "Entradas", "Total", "Tarjeta"}
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        });
+        
+        javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(tablaHistorial);
+        scroll.setBounds(20, 60, 520, 300);
+        panelFormulario.add(scroll);
+
+        btnVolver.setBounds(215, 385, 130, 30);
+        panelFormulario.add(btnVolver);
+
+        this.setLayout(new java.awt.GridBagLayout());
+        this.add(panelFormulario);
+        this.revalidate();
+        this.repaint();
     }
 
+    // --- NUESTROS GETTERS Y MÉTODOS ---
+    public javax.swing.JButton getBtnVolver() { return btnVolver; }
+
+    public void poblarTabla(List<Venta> compras) {
+        DefaultTableModel modelo = (DefaultTableModel) tablaHistorial.getModel();
+        modelo.setRowCount(0);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        for (Venta v : compras) {
+            String fecha = v.getFecha() != null ? formato.format(v.getFecha()) : "-";
+            String concierto = v.getNombreConcierto() != null ? v.getNombreConcierto() : "-";
+            String zona = v.getZona() != null ? v.getZona().getNombre() : "-";
+            int entradas = v.getEntradas() != null ? v.getEntradas().size() : 0;
+            String total = "S/ " + v.getMonto();
+            String tarjeta = v.getEmisor() != null ? v.getEmisor() : "-";
+
+            modelo.addRow(new Object[]{fecha, concierto, zona, entradas, total, tarjeta});
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

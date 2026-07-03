@@ -7,10 +7,10 @@ import java.io.Serializable;
 public class Usuario extends Persona implements Serializable{
     private Boolean estado;
     
-    public Usuario(String nombres, String apellidos, String dni, String email, String contraseña, Boolean estado){
-        super(nombres, apellidos, dni, email, contraseña);
+    public Usuario(String nombres, String apellidos, String dni, String email, String contraseña, Boolean estado, int edad){
+        super(nombres, apellidos, dni, email, contraseña, edad); // <-- Se añade edad aquí
         this.estado = estado;
-    }
+}
     
     public void registrarZonas(){}
     

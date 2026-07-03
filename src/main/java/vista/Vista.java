@@ -16,6 +16,7 @@ public class Vista extends javax.swing.JFrame {
      * Creates new form Vista
      */
     public Vista() {
+        modelo.GestorPersistencia.cargarDatos();
         initComponents();
         
         // Tamaño fijo ventana
@@ -79,12 +80,20 @@ public class Vista extends javax.swing.JFrame {
             controlComprarEntradas
         );
         
+        // 1. Primero creamos el controlador del historial
+        controlador.ControladorHistorialCompras ctrlHistorial = new controlador.ControladorHistorialCompras(
+            panelHistorialCompras,
+            jPanel1
+        );
+        
+        // 2. Creamos al cliente pasándole el historial al final
         controlador.ControladorCliente cCliente = new controlador.ControladorCliente(
             panelCliente, 
             jPanel1,
             controlConciertosDisponibles,
             controlTarjetasRegistradas,
-            controlAgregarTarjeta
+            controlAgregarTarjeta,
+            ctrlHistorial // <-- Agregamos esta variable aquí
         );
         
         controlador.ControladorSupervisarVentas controlSupervisarVentas = new controlador.ControladorSupervisarVentas(

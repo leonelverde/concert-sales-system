@@ -1,19 +1,21 @@
-
 package controlador;
 
 import vista.PanelTarjetasRegistradas;
-import coleccion.ColeccionTarjeta;
+import modelo.Sistema; // Memoria RAM
+import modelo.GestorPersistencia; // Guardado rápido
 import modelo.Tarjeta;
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import modelo.Cliente;
+import java.util.List;
 
 public class ControladorTarjetasRegistradas {
     
     private PanelTarjetasRegistradas vistaTarjetas;
     private Container contenedorPrincipal;
+    private Cliente clienteActual;
 
     public ControladorTarjetasRegistradas(PanelTarjetasRegistradas vistaTarjetas, Container contenedorPrincipal) {
         this.vistaTarjetas = vistaTarjetas;
@@ -27,16 +29,15 @@ public class ControladorTarjetasRegistradas {
         this.vistaTarjetas.getButtonEliminarTarjeta().addActionListener(e -> eliminarSeleccionada());
     }
     
-    private Cliente clienteActual;
-    
     public void setClienteSesion(Cliente cliente) {
         this.clienteActual = cliente;
         this.refrescarCatalogo();
     }
     
     public void refrescarCatalogo() {
-        Tarjeta[] lista = ColeccionTarjeta.obtenerTarjetasPorCliente(clienteActual.getDni());
-        this.vistaTarjetas.poblarTabla(lista);
+        if (clienteActual == null) return;
+        List<Tarjeta> lista = Sistema.getTarjetasPorCliente(clienteActual.getDni());
+        this.vistaTarjetas.poblarTabla(lista.toArray(new Tarjeta[0]));
     }
     
     private void eliminarSeleccionada() {
@@ -48,24 +49,28 @@ public class ControladorTarjetasRegistradas {
             return;
         }
 
-        // Tomamos el número de tarjeta visualizado en la columna 0 de esa fila
-        String numTarjeta = tabla.getValueAt(fila, 0).toString(); 
+        String numOculto = tabla.getValueAt(fila, 0).toString(); 
 
         int confirm = JOptionPane.showConfirmDialog(
             vistaTarjetas, 
-            "¿Seguro que desea eliminar la tarjeta terminada en " + numTarjeta.substring(numTarjeta.length() - 4) + "?", 
+            "¿Seguro que desea eliminar la tarjeta seleccionada (" + numOculto + ")?", 
             "Confirmar eliminación", 
             JOptionPane.YES_NO_OPTION
         );
 
         if (confirm == JOptionPane.YES_OPTION) {
-            boolean borrado = ColeccionTarjeta.eliminarTarjeta(numTarjeta);
-            
-            if (borrado) {
-                refrescarCatalogo(); // Redibujamos la tabla limpia
+            List<Tarjeta> delCliente = Sistema.getTarjetasPorCliente(clienteActual.getDni());
+            if(fila < delCliente.size()){
+                Tarjeta aEliminar = delCliente.get(fila);
+                
+                // Borramos de la RAM y guardamos en Disco
+                Sistema.tarjetas.remove(aEliminar);
+                GestorPersistencia.guardarDatos();
+                
+                refrescarCatalogo(); 
                 JOptionPane.showMessageDialog(vistaTarjetas, "Tarjeta eliminada correctamente.");
             } else {
-                JOptionPane.showMessageDialog(vistaTarjetas, "No se pudo eliminar la tarjeta del archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vistaTarjetas, "No se pudo eliminar la tarjeta.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

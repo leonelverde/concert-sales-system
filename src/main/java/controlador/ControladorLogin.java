@@ -4,11 +4,10 @@ import vista.PanelLogin;
 import modelo.Persona;
 import modelo.Cliente;
 import modelo.Usuario;
+import modelo.Sistema; // ¡Nuestra nueva memoria RAM!
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
-import coleccion.ColeccionCliente;
-import coleccion.ColeccionUsuario;
 
 public class ControladorLogin {
     
@@ -32,25 +31,16 @@ public class ControladorLogin {
     }
     
     public Persona verificarCredenciales(String emailStr, String passStr) {
-        Cliente[] lista = ColeccionCliente.obtenerClientes();
-        
-        for(Cliente c : lista){
-            if(c.getEmail().equalsIgnoreCase(emailStr) && c.getContraseña().equalsIgnoreCase(passStr)){
-                return c;
+        // ¡MAGIA DEL POLIMORFISMO AQUÍ!
+        // Recorremos una sola lista maestra que contiene a todos.
+        for(Persona p : Sistema.personas){
+            if(p.getEmail().equalsIgnoreCase(emailStr) && p.getContraseña().equals(passStr)){
+                return p;
             }
         }
-        
-        Usuario[] admins = ColeccionUsuario.obtenerUsuarios();
-        
-        for (Usuario u : admins) {
-            if (u.getEmail().equalsIgnoreCase(emailStr) && u.getContraseña().equals(passStr)) {
-                return u; 
-            }
-        }
-        
-        return null;
+        return null; // Si termina el bucle y no encontró nada, credenciales inválidas
     }
-      
+       
     private void validarLogin() {
         String email = vistaLogin.getTxtEmail().getText().trim();
         String pass = new String(vistaLogin.getTxtPassword().getPassword());
@@ -60,11 +50,11 @@ public class ControladorLogin {
         if (personaLogeada != null) {
             CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
             
+            // Usamos instanceof para saber a qué menú enviarlo dependiendo de su clase hija
             if (personaLogeada instanceof Usuario) { 
                 controladorAdmin.setAdminSesion((Usuario) personaLogeada);
                 cl.show(contenedorPrincipal, "admin");
             } else if (personaLogeada instanceof Cliente) {                
-                
                 controladorCliente.setClienteSesion((Cliente) personaLogeada);
                 cl.show(contenedorPrincipal, "cliente");
             }
@@ -72,7 +62,6 @@ public class ControladorLogin {
         } else {
             JOptionPane.showMessageDialog(vistaLogin, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
     }
 
     private void irARegistro() {

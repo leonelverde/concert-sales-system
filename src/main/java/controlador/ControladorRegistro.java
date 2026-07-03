@@ -1,15 +1,16 @@
-
 package controlador;
 
 import vista.PanelRegistro;
 import modelo.Cliente;
 import modelo.Usuario;
 import modelo.Persona;
+import modelo.Sistema; // Nuestra memoria RAM
+import modelo.GestorPersistencia; // Nuestro guardado único
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.util.Random;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import coleccion.ColeccionCliente;
-import coleccion.ColeccionUsuario;
 
 public class ControladorRegistro {
     private PanelRegistro vistaRegistro;
@@ -35,9 +36,21 @@ public class ControladorRegistro {
         String dni = vistaRegistro.getTxtDni().getText().trim(); 
         String email = vistaRegistro.getTxtEmail().getText().trim().toLowerCase();
         String pass = new String(vistaRegistro.getTxtPassword().getPassword());
+        String edadTexto = vistaRegistro.getTxtEdad().getText().trim(); // <-- Leer edad
 
-        if (nombres.isEmpty() || apellidos.isEmpty() || dni.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+        if (nombres.isEmpty() || apellidos.isEmpty() || dni.isEmpty() || email.isEmpty() || pass.isEmpty() || edadTexto.isEmpty()) {
             JOptionPane.showMessageDialog(vistaRegistro, "Llene todos los campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!dni.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(vistaRegistro, "El DNI debe tener exactamente 8 dígitos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-z]+$";
+        if (!Pattern.matches(emailRegex, email)) {
+            JOptionPane.showMessageDialog(vistaRegistro, "El formato del correo es inválido. Intente con un correo real.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -45,33 +58,58 @@ public class ControladorRegistro {
             JOptionPane.showMessageDialog(vistaRegistro, "El correo ingresado ya se encuentra registrado.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        // --- MANEJO DE EXCEPCIONES: Validación de Mayoría de Edad ---
+        int edadParsed = 0;
+        try {
+            edadParsed = Integer.parseInt(edadTexto);
+            if (edadParsed < 18) {
+                // Lanzamos nuestra excepción personalizada
+                throw new modelo.excepciones.EdadInvalidaException("Operación rechazada: Debe ser mayor de 18 años para registrarse.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(vistaRegistro, "Por favor, ingrese una edad numérica válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (modelo.excepciones.EdadInvalidaException ex) {
+            // Capturamos el error y bloqueamos el flujo
+            JOptionPane.showMessageDialog(vistaRegistro, ex.getMessage(), "Registro Denegado", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si pasa la validación de edad, procedemos con el código de 4 dígitos
+        String codigoGenerado = String.format("%04d", new java.util.Random().nextInt(10000));
+        String inputCodigo = JOptionPane.showInputDialog(vistaRegistro, 
+                "Simulación de Correo:\nSe ha enviado el código [" + codigoGenerado + "] a " + email + "\n\nIngrese el código de 4 dígitos para confirmar su cuenta:", 
+                "Verificación en dos pasos", JOptionPane.INFORMATION_MESSAGE);
+
+        if (inputCodigo == null || !inputCodigo.equals(codigoGenerado)) {
+            JOptionPane.showMessageDialog(vistaRegistro, "Código incorrecto o registro cancelado.", "Registro Fallido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         Persona nuevaPersona;
         
         if (email.endsWith("@admin.com")) {
-            // Si el correo termina en @admin.com, se instancia como Usuario (Administrador)
-            nuevaPersona = new Usuario(nombres, apellidos, dni, email, pass, Boolean.TRUE); 
+            nuevaPersona = new Usuario(nombres, apellidos, dni, email, pass, Boolean.TRUE, edadParsed); // <-- Pasa edad
         } else {
-            // Para cualquier otro correo (gmail, outlook, etc.), se instancia como Cliente
-            nuevaPersona = new Cliente(nombres, apellidos, dni, email, pass, Integer.valueOf(0)); 
+            nuevaPersona = new Cliente(nombres, apellidos, dni, email, pass, Integer.valueOf(0), edadParsed); // <-- Pasa edad
         }
         
-        boolean registrado = guardarNuevaPersona(nuevaPersona);
+        Sistema.personas.add(nuevaPersona);
+        GestorPersistencia.guardarDatos();
 
-        if (registrado) {
-            JOptionPane.showMessageDialog(vistaRegistro, "Cuenta creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCamposRegistro();
-            
-            CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
-            
-            if (nuevaPersona instanceof Usuario) {
-                cl.show(contenedorPrincipal, "admin");
-            } else {
-                controladorCliente.setClienteSesion((Cliente) nuevaPersona); 
-                cl.show(contenedorPrincipal, "cliente");
-            }
+        JOptionPane.showMessageDialog(vistaRegistro, "Cuenta creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        
+        // Limpiamos la caja de edad también
+        vistaRegistro.getTxtEdad().setText("");
+        limpiarCamposRegistro();
+        
+        CardLayout cl = (CardLayout) contenedorPrincipal.getLayout();
+        if (nuevaPersona instanceof Usuario) {
+            cl.show(contenedorPrincipal, "admin");
         } else {
-            JOptionPane.showMessageDialog(vistaRegistro, "Error al intentar registrar el usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+            controladorCliente.setClienteSesion((Cliente) nuevaPersona); 
+            cl.show(contenedorPrincipal, "cliente");
         }
     }
 
@@ -89,22 +127,10 @@ public class ControladorRegistro {
         vistaRegistro.getTxtEmail().setText(""); 
     }
 
-    private boolean guardarNuevaPersona(Persona p) {
-        
-        if (p instanceof Usuario) {
-            return ColeccionUsuario.agregarUsuario((Usuario) p);
-        } else if (p instanceof Cliente) {
-            return ColeccionCliente.agregarCliente((Cliente) p);
-        }
-        return false;
-    }
-
     private boolean existeCorreo(String emailBuscado) {
-        for (Cliente c : ColeccionCliente.obtenerClientes()) {
-            if (c.getEmail().equalsIgnoreCase(emailBuscado)) return true;
-        }
-        for (Usuario u : ColeccionUsuario.obtenerUsuarios()) {
-            if (u.getEmail().equalsIgnoreCase(emailBuscado)) return true;
+        // Polimorfismo: Buscamos en la única lista de la memoria
+        for (Persona p : Sistema.personas) {
+            if (p.getEmail().equalsIgnoreCase(emailBuscado)) return true;
         }
         return false;
     }

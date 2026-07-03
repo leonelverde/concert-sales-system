@@ -17,13 +17,12 @@ public class Cliente extends Persona implements Serializable{
     private Zona zonaSeleccionada;
     private Tarjeta tarjetaSeleccionada;
     
-    public Cliente(String nombres, String apellidos, String dni, String usuario, String contraseña, Integer puntos){
-        super(nombres, apellidos, dni, usuario, contraseña);
+    public Cliente(String nombres, String apellidos, String dni, String email, String contraseña, Integer puntos, int edad){
+        super(nombres, apellidos, dni, email, contraseña, edad); // <-- Se añade edad aquí
         this.puntos = puntos;
         this.historialCompras = new ArrayList<>();
         this.tarjetasRegistradas = new ArrayList<>();
-        
-    }
+}
     
     private void ingresar (String usuario, String contraseña){}
     

@@ -1,10 +1,8 @@
-
 package controlador;
 
 import vista.PanelComprarEntradas;
-import coleccion.ColeccionConcierto;
-import coleccion.ColeccionTarjeta;
-import coleccion.ColeccionVenta;
+import modelo.Sistema; // Memoria RAM
+import modelo.GestorPersistencia; // Guardado rápido
 import modelo.*;
 import modelo.excepciones.EntradaLimiteException;
 import modelo.excepciones.EntradaNoDisponibleException;
@@ -55,8 +53,8 @@ public class ControladorComprarEntradas {
         }
 
         Tarjeta tarjetaValida = null;
-        for (Tarjeta t : ColeccionTarjeta.obtenerTarjetas()) {
-            if (t.getNumero().equals(numTarjetaInput)) {
+        for (Tarjeta t : Sistema.tarjetas) {
+            if (t.getNumero().equals(numTarjetaInput) && t.getDniCliente().equals(clienteComprador.getDni())) {
                 tarjetaValida = t;
                 break;
             }
@@ -92,22 +90,19 @@ public class ControladorComprarEntradas {
             Venta nuevaVenta = new Venta(clienteComprador, zonaReal, tarjetaValida);
             nuevaVenta.setNombreConcierto(conciertoSeleccionado.getNombre());
 
-            // Cambiando estado de boletos a "Vendida"
             for (Entrada e : boletosParaVender) {
                 e.vender();
             }
 
             nuevaVenta.agregarEntradas(boletosParaVender);
 
-            // Validamos el emisor de la tarjeta con sus primeros digitos y
-            // aplicamos el descuento configurado para este concierto.
             EmisorTarjeta emisor = EmisorTarjeta.detectar(numTarjetaInput);
             double porcentaje = conciertoSeleccionado.getDescuento(emisor);
             nuevaVenta.aplicarDescuento(emisor.getEtiqueta(), porcentaje);
 
-            // Guardamos en ambos archivos .dat simultáneamente
-            ColeccionVenta.agregarVenta(nuevaVenta);
-            ColeccionConcierto.actualizarConcierto(conciertoSeleccionado);
+            // --- MAGIA: Guardamos en RAM y persistimos de un golpe ---
+            Sistema.ventas.add(nuevaVenta);
+            GestorPersistencia.guardarDatos();
 
             String terminacion = numTarjetaInput.length() >= 4
                     ? numTarjetaInput.substring(numTarjetaInput.length() - 4)

@@ -1,63 +1,51 @@
-
 package modelo;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
 
-public class GestorPersistencia implements Serializable{
-    
-    private static final String RUTA_ARCHIVO = "datos_usuarios.dat";
+public class GestorPersistencia {
 
-    // Guarda una nueva persona en el archivo
-    public boolean guardarPersona(Persona nuevaPersona) {
-        List<Persona> lista = leerTodasLasPersonas();
-        
-        // Verificar que el usuario no exista ya
-        for (Persona p : lista) {
-            if (p.getEmail().equals(nuevaPersona.getEmail())) {
-                return false; // El nombre de usuario ya está tomado
-            }
-        }
-        
-        lista.add(nuevaPersona);
-        
-        // Escribir la lista actualizada en el disco
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA_ARCHIVO))) {
-            oos.writeObject(lista);
-            return true;
+    private static final String ARCHIVO_PERSONAS = "datos_personas.dat";
+    private static final String ARCHIVO_CONCIERTOS = "datos_conciertos.dat";
+    private static final String ARCHIVO_VENTAS = "datos_ventas.dat";
+    private static final String ARCHIVO_TARJETAS = "datos_tarjetas.dat";
+
+    // --- GUARDAR TODO AL SALIR ---
+    public static void guardarDatos() {
+        serializar(ARCHIVO_PERSONAS, Sistema.personas);
+        serializar(ARCHIVO_CONCIERTOS, Sistema.conciertos);
+        serializar(ARCHIVO_VENTAS, Sistema.ventas);
+        serializar(ARCHIVO_TARJETAS, Sistema.tarjetas);
+    }
+
+    // --- CARGAR TODO AL INICIAR ---
+    @SuppressWarnings("unchecked")
+    public static void cargarDatos() {
+        Sistema.personas = (List<Persona>) deserializar(ARCHIVO_PERSONAS, new ArrayList<Persona>());
+        Sistema.conciertos = (List<Concierto>) deserializar(ARCHIVO_CONCIERTOS, new ArrayList<Concierto>());
+        Sistema.ventas = (List<Venta>) deserializar(ARCHIVO_VENTAS, new ArrayList<Venta>());
+        Sistema.tarjetas = (List<Tarjeta>) deserializar(ARCHIVO_TARJETAS, new ArrayList<Tarjeta>());
+    }
+
+    // Métodos genéricos ocultos para no repetir código
+    private static void serializar(String ruta, Object objeto) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ruta))) {
+            oos.writeObject(objeto);
         } catch (IOException e) {
-            System.out.println("Error al guardar en disco: " + e.getMessage());
-            return false;
+            System.out.println("Error al guardar " + ruta + ": " + e.getMessage());
         }
     }
 
-    // Busca si las credenciales coinciden y devuelve el objeto original
-    public Persona verificarCredenciales(String usuarioStr, String passStr) {
-        List<Persona> lista = leerTodasLasPersonas();
-        
-        for (Persona p : lista) {
-            if (p.getEmail().equals(usuarioStr) && p.getContraseña().equals(passStr)) {
-                return p; // Retorna el Cliente o Usuario encontrado
-            }
-        }
-        return null; // Credenciales inválidas
-    }
-
-    // Método auxiliar para leer el archivo completo
-    private List<Persona> leerTodasLasPersonas() {
-        List<Persona> lista = new ArrayList<>();
-        File archivo = new File(RUTA_ARCHIVO);
-        
+    private static Object deserializar(String ruta, Object valorPorDefecto) {
+        File archivo = new File(ruta);
         if (archivo.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-                lista = (List<Persona>) ois.readObject();
+                return ois.readObject();
             } catch (Exception e) {
-                System.out.println("Error al leer el archivo: " + e.getMessage());
+                System.out.println("Error al leer " + ruta + ": " + e.getMessage());
             }
         }
-        return lista;
+        return valorPorDefecto; // Evita que la pantalla se ponga en blanco si no hay archivo
     }
-    
 }

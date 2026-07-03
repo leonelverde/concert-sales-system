@@ -1,16 +1,16 @@
-
 package controlador;
 
 import vista.PanelRegistrarConcierto;
 import modelo.Concierto;
 import modelo.Zona;
+import modelo.Sistema; // Memoria RAM
+import modelo.GestorPersistencia; // Guardado rápido
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import coleccion.ColeccionConcierto;
 
 public class ControladorRegistrarConcierto {
     private PanelRegistrarConcierto vistaRegistroConcierto;
@@ -19,7 +19,6 @@ public class ControladorRegistrarConcierto {
     public ControladorRegistrarConcierto(PanelRegistrarConcierto vistaRegistroConcierto, Container contenedorPrincipal) {
         this.vistaRegistroConcierto = vistaRegistroConcierto;
         this.contenedorPrincipal = contenedorPrincipal;
-        
         this.iniciar();
     }
 
@@ -37,7 +36,6 @@ public class ControladorRegistrarConcierto {
             return;
         }
 
-        // Convertir la fecha
         Date fechaConcierto;
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,10 +46,8 @@ public class ControladorRegistrarConcierto {
             return;
         }
 
-        // Instancia del concierto vacio
         Concierto nuevoConcierto = new Concierto(nombre, fechaConcierto);
 
-        // Extraer capacidad y precios
         try {
             int capPlat = Integer.parseInt(vistaRegistroConcierto.getTxtCapacidadPlatinum().getText().trim());
             int precioPlat = Integer.parseInt(vistaRegistroConcierto.getTxtPrecioPlatinum().getText().trim());
@@ -74,16 +70,13 @@ public class ControladorRegistrarConcierto {
             return;
         }
 
-        // Guardar todo el bloque en el disco duro
-        boolean guardado = ColeccionConcierto.agregarConcierto(nuevoConcierto);
+        // --- MAGIA NUEVA: Guardamos en RAM y luego al disco ---
+        Sistema.conciertos.add(nuevoConcierto);
+        GestorPersistencia.guardarDatos();
 
-        if (guardado) {
-            JOptionPane.showMessageDialog(vistaRegistroConcierto, "Concierto y zonas registrados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCampos();
-            volverAlMenuAdmin();
-        } else {
-            JOptionPane.showMessageDialog(vistaRegistroConcierto, "Error al guardar el concierto en el disco.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        JOptionPane.showMessageDialog(vistaRegistroConcierto, "Concierto y zonas registrados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        limpiarCampos();
+        volverAlMenuAdmin();
     }
     
     private void volverAlMenuAdmin() {
@@ -95,16 +88,12 @@ public class ControladorRegistrarConcierto {
     private void limpiarCampos() {
         vistaRegistroConcierto.getTxtNombreConcierto().setText("");
         vistaRegistroConcierto.getTxtFechaConcierto().setText("");
-        
         vistaRegistroConcierto.getTxtCapacidadPlatinum().setText("");
         vistaRegistroConcierto.getTxtPrecioPlatinum().setText("");
-        
         vistaRegistroConcierto.getTxtCapacidadVip().setText("");
         vistaRegistroConcierto.getTxtPrecioVip().setText("");
-        
         vistaRegistroConcierto.getTxtCapacidadGeneral().setText("");
         vistaRegistroConcierto.getTxtPrecioGeneral().setText("");
-        
         vistaRegistroConcierto.getTxtCapacidadTribuna().setText("");
         vistaRegistroConcierto.getTxtPrecioTribuna().setText("");
     }

@@ -4,7 +4,7 @@ import vista.PanelLogin;
 import modelo.Persona;
 import modelo.Cliente;
 import modelo.Usuario;
-import modelo.Sistema; // ¡Nuestra nueva memoria RAM!
+import modelo.Sistema; // Nuestra nueva memoria RAM
 import java.awt.CardLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;

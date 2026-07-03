@@ -100,7 +100,7 @@ public class ControladorComprarEntradas {
             double porcentaje = conciertoSeleccionado.getDescuento(emisor);
             nuevaVenta.aplicarDescuento(emisor.getEtiqueta(), porcentaje);
 
-            // --- MAGIA: Guardamos en RAM y persistimos de un golpe ---
+            // --- Guardamos en RAM y persistimos de un golpe ---
             Sistema.ventas.add(nuevaVenta);
             GestorPersistencia.guardarDatos();
 

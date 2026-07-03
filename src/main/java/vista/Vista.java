@@ -32,6 +32,7 @@ public class Vista extends javax.swing.JFrame {
         PanelConciertosDisponibles panelConciertosDisponibles = new PanelConciertosDisponibles();
         PanelRegistrarConcierto panelRegistrarConcierto = new PanelRegistrarConcierto();
         PanelSupervisarVentas panelSupervisarVentas = new PanelSupervisarVentas();
+        PanelGestionZonas panelGestionZonas = new PanelGestionZonas();
         PanelHistorialCompras panelHistorialCompras = new PanelHistorialCompras();
         PanelTarjetasRegistradas panelTarjetasRegistradas = new PanelTarjetasRegistradas();
         PanelAgregarTarjeta panelAgregarTarjeta = new PanelAgregarTarjeta();
@@ -46,6 +47,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel1.add(panelConciertosDisponibles, "conciertosDisponibles");
         jPanel1.add(panelRegistrarConcierto, "registrarConcierto");
         jPanel1.add(panelSupervisarVentas, "supervisarVentas");
+        jPanel1.add(panelGestionZonas, "gestionZonas");
         jPanel1.add(panelHistorialCompras, "historialCompras");
         jPanel1.add(panelTarjetasRegistradas, "tarjetasRegistradas");
         jPanel1.add(panelAgregarTarjeta, "agregarTarjeta");
@@ -85,9 +87,21 @@ public class Vista extends javax.swing.JFrame {
             controlAgregarTarjeta
         );
         
-        controlador.ControladorAdmin cAdmin = new controlador.ControladorAdmin(
-            panelAdmin, 
+        controlador.ControladorSupervisarVentas controlSupervisarVentas = new controlador.ControladorSupervisarVentas(
+            panelSupervisarVentas,
             jPanel1
+        );
+
+        controlador.ControladorGestionZonas controlGestionZonas = new controlador.ControladorGestionZonas(
+            panelGestionZonas,
+            jPanel1
+        );
+
+        controlador.ControladorAdmin cAdmin = new controlador.ControladorAdmin(
+            panelAdmin,
+            jPanel1,
+            controlSupervisarVentas,
+            controlGestionZonas
         );
         
         controlador.ControladorLogin controlLogin = new controlador.ControladorLogin(

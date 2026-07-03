@@ -24,6 +24,7 @@
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="buttonSupervisarVentas" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="btnGestionarZonas" min="-2" pref="158" max="-2" attributes="0"/>
                           <Component id="btnRegistrarConcierto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -46,6 +47,8 @@
               <Component id="btnRegistrarConcierto" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="buttonSupervisarVentas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="btnGestionarZonas" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="buttonCerrarSesion" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="94" max="32767" attributes="0"/>
@@ -77,6 +80,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSupervisarVentasActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnGestionarZonas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gestionar Zonas"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonCerrarSesion">
       <Properties>

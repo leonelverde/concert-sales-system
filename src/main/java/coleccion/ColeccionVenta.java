@@ -21,4 +21,9 @@ public class ColeccionVenta {
     public static Venta[] obtenerVentas() {
         return ArchivoVenta.cargarVentas();
     }
+
+    // Reescribe el archivo completo de ventas (usado al anular/cancelar una compra).
+    public static boolean guardarTodas(Venta[] ventas) {
+        return ArchivoVenta.guardarVentas(ventas, ventas.length);
+    }
 }

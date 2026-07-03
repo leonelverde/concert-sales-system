@@ -90,20 +90,37 @@ public class ControladorComprarEntradas {
 
         try {
             Venta nuevaVenta = new Venta(clienteComprador, zonaReal, tarjetaValida);
-            
+            nuevaVenta.setNombreConcierto(conciertoSeleccionado.getNombre());
+
             // Cambiando estado de boletos a "Vendida"
             for (Entrada e : boletosParaVender) {
-                e.vender(); 
+                e.vender();
             }
 
             nuevaVenta.agregarEntradas(boletosParaVender);
+
+            // Validamos el emisor de la tarjeta con sus primeros digitos y
+            // aplicamos el descuento configurado para este concierto.
+            EmisorTarjeta emisor = EmisorTarjeta.detectar(numTarjetaInput);
+            double porcentaje = conciertoSeleccionado.getDescuento(emisor);
+            nuevaVenta.aplicarDescuento(emisor.getEtiqueta(), porcentaje);
 
             // Guardamos en ambos archivos .dat simultáneamente
             ColeccionVenta.agregarVenta(nuevaVenta);
             ColeccionConcierto.actualizarConcierto(conciertoSeleccionado);
 
-            JOptionPane.showMessageDialog(vistaCompra, "¡Compra Exitosa!\nSe cargaron S/ " + nuevaVenta.getMonto() + " a su tarjeta terminada en " + numTarjetaInput.substring(12), "Ticket Emitido", JOptionPane.INFORMATION_MESSAGE);
-            
+            String terminacion = numTarjetaInput.length() >= 4
+                    ? numTarjetaInput.substring(numTarjetaInput.length() - 4)
+                    : numTarjetaInput;
+            String detalleDescuento = porcentaje > 0
+                    ? "\nTarjeta " + emisor.getEtiqueta() + ": descuento del " + porcentaje + "%"
+                        + "\nSubtotal: S/ " + nuevaVenta.getSubtotal()
+                    : "\nTarjeta " + emisor.getEtiqueta() + " (sin descuento)";
+
+            JOptionPane.showMessageDialog(vistaCompra, "¡Compra Exitosa!" + detalleDescuento
+                    + "\nTotal cobrado: S/ " + nuevaVenta.getMonto()
+                    + "\nTarjeta terminada en " + terminacion, "Ticket Emitido", JOptionPane.INFORMATION_MESSAGE);
+
             vistaCompra.getTxtTarjeta().setText("");
             volver();
 

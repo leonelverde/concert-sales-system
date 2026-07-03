@@ -8,10 +8,14 @@ import modelo.excepciones.EntradaNoDisponibleException;
 import java.io.Serializable;
 
 public class Zona implements Serializable{
+    // Se fija el serialVersionUID al valor auto-generado original para no romper
+    // la lectura de los archivos .dat existentes al agregar nuevos metodos.
+    private static final long serialVersionUID = -1917868843209091102L;
+
     private String nombre;
     private int capacidad;
     private int precio;
-    private List<Entrada> entradas; 
+    private List<Entrada> entradas;
 
     public Zona(String nombre, int capacidad, int precio){
         this.nombre = nombre;
@@ -71,4 +75,12 @@ public class Zona implements Serializable{
     public int getPrecio() { return precio; }
     public String getNombre() { return nombre; }
     public List<Entrada> getEntradas() {return entradas;}
+
+    public int getCapacidad() { return capacidad; }
+
+    // Permite que el administrador modifique el nombre de la zona.
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    // Permite que el administrador modifique el precio de la zona.
+    public void setPrecio(int precio) { this.precio = precio; }
 }

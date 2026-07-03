@@ -29,6 +29,7 @@ public class PanelAdmin extends javax.swing.JPanel {
         lblBienvenidoAdmin = new javax.swing.JLabel();
         btnRegistrarConcierto = new javax.swing.JButton();
         buttonSupervisarVentas = new javax.swing.JButton();
+        btnGestionarZonas = new javax.swing.JButton();
         buttonCerrarSesion = new javax.swing.JButton();
 
         lblBienvenidoAdmin.setFont(new java.awt.Font("Nimbus Mono PS", 0, 36)); // NOI18N
@@ -39,6 +40,8 @@ public class PanelAdmin extends javax.swing.JPanel {
 
         buttonSupervisarVentas.setText("Supervisar Ventas");
         buttonSupervisarVentas.addActionListener(this::buttonSupervisarVentasActionPerformed);
+
+        btnGestionarZonas.setText("Gestionar Zonas");
 
         buttonCerrarSesion.setText("Cerrar Sesion");
         buttonCerrarSesion.addActionListener(this::buttonCerrarSesionActionPerformed);
@@ -55,6 +58,7 @@ public class PanelAdmin extends javax.swing.JPanel {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonSupervisarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestionarZonas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRegistrarConcierto))))
                 .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -71,6 +75,8 @@ public class PanelAdmin extends javax.swing.JPanel {
                 .addComponent(btnRegistrarConcierto)
                 .addGap(28, 28, 28)
                 .addComponent(buttonSupervisarVentas)
+                .addGap(28, 28, 28)
+                .addComponent(btnGestionarZonas)
                 .addGap(30, 30, 30)
                 .addComponent(buttonCerrarSesion)
                 .addContainerGap(94, Short.MAX_VALUE))
@@ -92,6 +98,7 @@ public class PanelAdmin extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarConcierto;
+    private javax.swing.JButton btnGestionarZonas;
     private javax.swing.JButton buttonCerrarSesion;
     private javax.swing.JButton buttonSupervisarVentas;
     private javax.swing.JLabel lblBienvenidoAdmin;
@@ -99,6 +106,7 @@ public class PanelAdmin extends javax.swing.JPanel {
 
     public javax.swing.JButton getButtonRegistrarConcierto() { return btnRegistrarConcierto; }
     public javax.swing.JButton getButtonSupervisarVentas() { return buttonSupervisarVentas; }
+    public javax.swing.JButton getButtonGestionarZonas() { return btnGestionarZonas; }
     public javax.swing.JButton getButtonCerrarSesion() { return buttonCerrarSesion; }
 
 }

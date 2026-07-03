@@ -16,7 +16,8 @@ public class Vista extends javax.swing.JFrame {
      * Creates new form Vista
      */
     public Vista() {
-        modelo.GestorPersistencia.cargarDatos();
+        modelo.GestorPersistencia.cargarDatos(); // Intenta leer el disco
+        modelo.Sistema.cargarDatosIniciales();   // Si el disco estaba vacío, inyecta la info
         initComponents();
         
         // Tamaño fijo ventana
